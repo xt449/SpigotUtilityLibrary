@@ -1,20 +1,14 @@
 package xt449.Utilities;
 
-import java.util.UUID;
-
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
-
 import org.bukkit.plugin.java.JavaPlugin;
 import xt449.Utilities.Command.DebugCommand;
 
 public class Utilities extends JavaPlugin {
-	
-	public static final UUID uuid = UUID.fromString("817f9bc4-978f-3781-985d-1ed276c4a203");
 	
 	private static final String netherPrefix = "_nether";
 	private static final String endPrefix = "_the_end";
@@ -30,10 +24,6 @@ public class Utilities extends JavaPlugin {
 	@Override
 	public final void onEnable() {
 		new DebugCommand(this).register();
-	}
-	
-	public static final String getCustomColorCodes(String string) {
-		return ChatColor.translateAlternateColorCodes('&', string);
 	}
 	
 	public static final World getOverworld(World world) {
