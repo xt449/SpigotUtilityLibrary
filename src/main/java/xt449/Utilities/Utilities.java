@@ -1,10 +1,7 @@
 package xt449.Utilities;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import xt449.Utilities.Command.DebugCommand;
 
@@ -13,12 +10,9 @@ public class Utilities extends JavaPlugin {
 	private static final String netherPrefix = "_nether";
 	private static final String endPrefix = "_the_end";
 	
-	public static ItemStack debugItem = new ItemStack(Material.POISONOUS_POTATO);
-	
 	@Override
 	public final void onLoad() {
 		new UtilitiesEnchantment(UtilitiesEnchantment.EFFECT, 0, 0).register();
-		debugItem.addEnchantment(Enchantment.getByName(UtilitiesEnchantment.EFFECT), 0);
 	}
 	
 	@Override
@@ -55,13 +49,4 @@ public class Utilities extends JavaPlugin {
 	public static final World getEndWorld(World world) {
 		return Bukkit.getServer().getWorld(getOverworld(world).getName() + endPrefix);
 	}
-
-	/*
-	static {
-		String name = "org.bukkit.craftbukkit.v1_8_2.CraftServer";
-		name = name.substring("org.bukkit.craftbukkit".length()); // name = "v1_8_2.CraftServer"
-		int versionLength = name.length() - "CraftServer".length(); 
-		name = name.substring(0, versionLength); // basically replace ".CraftServer" with nothing
-	}
-	*/
 }
