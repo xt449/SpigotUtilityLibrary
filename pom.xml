@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>xt449</groupId>
+    <artifactId>Utilities</artifactId>
+    <version>2.4.0</version>
+    <repositories>
+        <repository>
+            <id>spigot-nexus</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+        </repository>
+
+        <!--<repository>
+            <id>fireflies-nexus</id>
+            <url>http://maven.albionco.de/content/repositories/craftbukkit/</url>
+        </repository>-->
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>craftbukkit</artifactId>
+            <version>LOCAL</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../API/craftbukkit-1.8.6.jar</systemPath>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>LOCAL</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../API/Spigot/spigot-1.8.4.jar</systemPath>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>LATEST</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <defaultGoal>clean package</defaultGoal>
+        <directory>${project.basedir}/../BUILDS/${project.artifactId}</directory>
+        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
