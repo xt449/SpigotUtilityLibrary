@@ -1,5 +1,5 @@
 main: xt449.Utilities.Utilities
-version: 2.4.0
+version: 2.5.0
 load: STARTUP
 name: Utilities
 author: xt449
