@@ -1,9 +1,9 @@
 package xt449.Utilities;
 
-import java.util.Arrays;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Arrays;
 
 public class UtilitiesItem {
 	

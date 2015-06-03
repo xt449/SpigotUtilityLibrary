@@ -1,17 +1,16 @@
 package xt449.Utilities.Command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-
 import xt449.Utilities.UtilitiesCommand;
 import xt449.Utilities.UtilitiesEnchantment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DebugCommand extends UtilitiesCommand {
 	

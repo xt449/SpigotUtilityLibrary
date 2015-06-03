@@ -44,8 +44,7 @@ public class Jailbird {
 		
 		try {
 			return Class.forName(CRAFTBUKKIT_LOC + VERSION + name);
-		}
-		catch(ClassNotFoundException e) {
+		} catch(ClassNotFoundException e) {
 			throw new IllegalArgumentException("\"" + name + "\" is not a CraftBukkit class!");
 		}
 	}
@@ -57,8 +56,7 @@ public class Jailbird {
 		
 		try {
 			return Class.forName(NMS_LOC + VERSION + name);
-		}
-		catch(ClassNotFoundException e) {
+		} catch(ClassNotFoundException e) {
 			throw new IllegalArgumentException("\"" + name + "\" is not an NMS class!");
 		}
 	}

@@ -1,10 +1,10 @@
 package xt449.Utilities;
 
-import java.lang.reflect.Field;
-
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
+
+import java.lang.reflect.Field;
 
 public class UtilitiesEnchantment extends Enchantment {
 	
@@ -60,24 +60,19 @@ public class UtilitiesEnchantment extends Enchantment {
 			
 			try {
 				Enchantment.registerEnchantment(this);
-			}
-			catch(IllegalArgumentException exc) {
+			} catch(IllegalArgumentException exc) {
 				// ENCHANTMENT ALREADY REGISTERED!
 				exc.printStackTrace();
 			}
 			
 			field.set(null, false);
-		}
-		catch(IllegalAccessException exc) {
+		} catch(IllegalAccessException exc) {
 			exc.printStackTrace();
-		}
-		catch(IllegalArgumentException exc) {
+		} catch(IllegalArgumentException exc) {
 			exc.printStackTrace();
-		}
-		catch(NoSuchFieldException exc) {
+		} catch(NoSuchFieldException exc) {
 			exc.printStackTrace();
-		}
-		catch(SecurityException exc) {
+		} catch(SecurityException exc) {
 			exc.printStackTrace();
 		}
 	}

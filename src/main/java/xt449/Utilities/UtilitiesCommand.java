@@ -1,8 +1,5 @@
 package xt449.Utilities;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,6 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 public abstract class UtilitiesCommand extends Command implements PluginIdentifiableCommand {
 	
@@ -74,11 +74,9 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 				cm.setAccessible(true);
 				
 				commandMap = (CommandMap) cm.get(Bukkit.getServer());
-			}
-			catch(RuntimeException exc) {
+			} catch(RuntimeException exc) {
 				exc.printStackTrace();
-			}
-			catch(ReflectiveOperationException exc) {
+			} catch(ReflectiveOperationException exc) {
 				exc.printStackTrace();
 			}
 		}

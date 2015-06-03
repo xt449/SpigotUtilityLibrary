@@ -40,21 +40,16 @@ public class UtilitiesTitle2 {
 
         try {
             packet = titleClass.getConstructor(titleActionClass, chatBaseClass).newInstance(titleActionClass.getEnumConstants()[0], chatBaseSerializerClass.getMethod("a", String.class).invoke(chatBaseSerializerClass, null));
-        }
-        catch(IllegalAccessException exc) {
+        } catch(IllegalAccessException exc) {
             exc.printStackTrace();
-        }
-        catch(InstantiationException exc) {
+        } catch(InstantiationException exc) {
             exc.printStackTrace();
-        }
-        catch(InvocationTargetException exc) {
+        } catch(InvocationTargetException exc) {
             exc.printStackTrace();
-        }
-        catch(NoSuchMethodException exc) {
+        } catch(NoSuchMethodException exc) {
             exc.printStackTrace();
-        }
-        finally {
-            for (Player player : players) {
+        } finally {
+            for(Player player : players) {
                 Object craftPlayer = Jailbird.getCraftBukkitClass("CraftPlayer").cast(player);
 
                 try {
@@ -63,13 +58,13 @@ public class UtilitiesTitle2 {
                     Object playerConnection = playerHandle.getClass().getField("playerConnection").get(playerHandle);
 
                     playerConnection.getClass().getMethod("sendPacket", Jailbird.getCraftBukkitClass("Packet")).invoke(playerConnection, packet);
-                } catch (IllegalAccessException exc) {
+                } catch(IllegalAccessException exc) {
                     exc.printStackTrace();
-                } catch (InvocationTargetException exc) {
+                } catch(InvocationTargetException exc) {
                     exc.printStackTrace();
-                } catch (NoSuchFieldException exc) {
+                } catch(NoSuchFieldException exc) {
                     exc.printStackTrace();
-                } catch (NoSuchMethodException exc) {
+                } catch(NoSuchMethodException exc) {
                     exc.printStackTrace();
                 }
             }
