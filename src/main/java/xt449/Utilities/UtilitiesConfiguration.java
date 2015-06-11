@@ -17,7 +17,7 @@ public abstract class UtilitiesConfiguration {
 
 	protected abstract void setPathDefaults();
 
-	protected abstract void getPathValues();
+	public abstract void getPathValues();
 
 	public void initialize(Plugin plugin) {
 		file = new File(plugin.getDataFolder(), getFileName());
