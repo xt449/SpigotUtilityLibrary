@@ -26,14 +26,14 @@
             <artifactId>craftbukkit</artifactId>
             <version>LOCAL</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/../API/craftbukkit-1.8.6.jar</systemPath>
+            <systemPath>${project.basedir}/../API/craftbukkit-1.8.7.jar</systemPath>
         </dependency>
         <!--<dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>LOCAL</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/../API/Spigot/spigot-1.8.4.jar</systemPath>
+            <systemPath>${project.basedir}/../API/Spigot/spigot-1.8.7.jar</systemPath>
         </dependency>-->
 
         <dependency>
