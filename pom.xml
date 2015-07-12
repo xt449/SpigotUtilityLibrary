@@ -6,7 +6,7 @@
 
     <groupId>xt449</groupId>
     <artifactId>Utilities</artifactId>
-    <version>2.7.0</version>
+    <version>2.7.1</version>
 
     <repositories>
         <repository>
@@ -21,6 +21,14 @@
     </repositories>
 
     <dependencies>
+        <!-- CONTAINS JAVADOC -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+        <!-- DOES NOT CONTAIN JAVADOC -->
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
@@ -28,6 +36,7 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/../API/craftbukkit-1.8.7.jar</systemPath>
         </dependency>
+
         <!--<dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
@@ -35,12 +44,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/../API/Spigot/spigot-1.8.7.jar</systemPath>
         </dependency>-->
-
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>LATEST</version>
-        </dependency>
     </dependencies>
 
     <build>

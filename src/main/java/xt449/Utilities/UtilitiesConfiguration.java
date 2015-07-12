@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public abstract class UtilitiesConfiguration {
 
+	private Plugin plugin;
 	private File file;
 	protected YamlConfiguration config;
 
@@ -19,7 +20,8 @@ public abstract class UtilitiesConfiguration {
 
 	public abstract void getPathValues();
 
-	public void initialize(Plugin plugin) {
+	public final void initialize(Plugin plugin) {
+		this.plugin = plugin;
 		file = new File(plugin.getDataFolder(), getFileName());
 		config = YamlConfiguration.loadConfiguration(file);
 		/* configDefault = YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource("main.yml"))); */
@@ -64,5 +66,9 @@ public abstract class UtilitiesConfiguration {
 		} catch(IOException exc) {
 			exc.printStackTrace();
 		}
+	}
+
+	public final Plugin getPlugin() {
+		return plugin;
 	}
 }
