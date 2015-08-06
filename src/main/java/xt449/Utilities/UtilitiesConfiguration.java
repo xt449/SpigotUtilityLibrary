@@ -60,7 +60,7 @@ public abstract class UtilitiesConfiguration {
 		save();
 	}
 
-	private final void save() {
+	protected final void save() {
 		try {
 			config.save(file);
 		} catch(IOException exc) {
