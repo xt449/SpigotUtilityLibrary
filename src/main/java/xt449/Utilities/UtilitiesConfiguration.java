@@ -12,6 +12,10 @@ public abstract class UtilitiesConfiguration {
 	private File file;
 	protected YamlConfiguration config;
 
+	public UtilitiesConfiguration(Plugin plugin) {
+		this.plugin = plugin;
+	}
+
 	protected abstract String getFileName();
 
 	protected abstract String getHeader();
@@ -20,11 +24,9 @@ public abstract class UtilitiesConfiguration {
 
 	public abstract void getPathValues();
 
-	public final void initialize(Plugin plugin) {
-		this.plugin = plugin;
+	public final void initialize() {
 		file = new File(plugin.getDataFolder(), getFileName());
 		config = YamlConfiguration.loadConfiguration(file);
-		/* configDefault = YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource("main.yml"))); */
 
 		// Folder Setup:
 		try {
@@ -47,13 +49,9 @@ public abstract class UtilitiesConfiguration {
 		config.options().copyHeader(false);
 		config.options().header(getHeader());
 
-
 		setPathDefaults();
 
 		getPathValues();
-
-		
-		/* config.setDefaults(configDefault); */
 
 		// This configuration save is only important for the first plugin
 		// load or any paths removed by the user or added in a new version
@@ -68,7 +66,7 @@ public abstract class UtilitiesConfiguration {
 		}
 	}
 
-	public final Plugin getPlugin() {
+	protected final Plugin getPlugin() {
 		return plugin;
 	}
 }
