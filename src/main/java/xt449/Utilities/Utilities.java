@@ -13,11 +13,23 @@ public class Utilities extends JavaPlugin {
 	@Override
 	public final void onLoad() {
 		new UtilitiesEnchantment(UtilitiesEnchantment.EFFECT, 0, 0).register();
+
+		// Log Plugin State
+		getLogger().info("Plugin - Loaded!");
 	}
 	
 	@Override
 	public final void onEnable() {
 		new DebugCommand(this).register();
+
+		// Log Plugin State
+		getLogger().info("Plugin - Enabled!");
+	}
+
+	@Override
+	public final void onDisable() {
+		// Log Plugin State
+		getLogger().info("Plugin - Disabled!");
 	}
 	
 	public static final World getOverworld(World world) {
