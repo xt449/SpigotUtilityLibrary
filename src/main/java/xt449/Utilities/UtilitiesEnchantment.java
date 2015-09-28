@@ -62,7 +62,6 @@ public class UtilitiesEnchantment extends Enchantment {
 				Enchantment.registerEnchantment(this);
 			} catch(IllegalArgumentException exc) {
 				// ENCHANTMENT ALREADY REGISTERED!
-				exc.printStackTrace();
 			}
 			
 			field.set(null, false);
