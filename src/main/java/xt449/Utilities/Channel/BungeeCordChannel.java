@@ -12,7 +12,7 @@ public class BungeeCordChannel {
 	 *
 	 * @param String - name of server (as defined in BungeeCord config.yml)
 	 */
-	public static final String Connect = "BungeeCord";
+	public static final String Connect = "Connect";
 
 	/**
 	 * Connects a player to a server
@@ -20,31 +20,31 @@ public class BungeeCordChannel {
 	 * @param String - name of player
 	 * @param String - name of server (as defined in BungeeCord config.yml)
 	 */
-	public static final String ConnectOther = "BungeeCord";
+	public static final String ConnectOther = "ConnectOther";
 	
 	/**
 	 * Gets the IP of the player
 	 */
-	public static final String IP = "BungeeCord";
+	public static final String IP = "IP";
 	
 	/**
 	 * Gets the amount of players on a server |OR| ALL the servers
 	 *
 	 * @param String - name of server (as defined in BungeeCord config.yml) |OR| ALL (for global count)
 	 */
-	public static final String PlayerCount = "BungeeCord";
+	public static final String PlayerCount = "PlayerCount";
 	
 	/**
 	 * Gets the list of players on a server |OR| ALL the servers
 	 *
 	 * @param String - name of server (as defined in BungeeCord config.yml) |OR| ALL (for global count)
 	 */
-	public static final String PlayerList = "BungeeCord";
+	public static final String PlayerList = "PlayerList";
 	
 	/**
 	 * Gets the list of server names (as defined in BungeeCord config.yml)
 	 */
-	public static final String GetServers = "BungeeCord";
+	public static final String GetServers = "GetServers";
 	
 	/**
 	 * Sends a message to a player
@@ -52,12 +52,12 @@ public class BungeeCordChannel {
 	 * @param String - name of player
 	 * @param String - message to send
 	 */
-	public static final String Message = "BungeeCord";
+	public static final String Message = "Message";
 	
 	/**
 	 * Gets the name of the server to which the player is connected
 	 */
-	public static final String GetServer = "BungeeCord";
+	public static final String GetServer = "GetServer";
 	
 	/**
 	 * Send a plugin message to a server |OR| ALL the servers
@@ -67,24 +67,24 @@ public class BungeeCordChannel {
 	 * @param Short - size of message
 	 * @param Byte[] - message
 	 */
-	public static final String Forward = "BungeeCord";
+	public static final String Forward = "Forward";
 	
 	/**
 	 * Gets the UUID of the player
 	 */
-	public static final String UUID = "BungeeCord";
+	public static final String UUID = "UUID";
 	
 	/**
 	 * Gets the UUID of a player
 	 *
 	 * @param String - name of player
 	 */
-	public static final String UUIDOther = "BungeeCord";
+	public static final String UUIDOther = "UUIDOther";
 	
 	/**
 	 * Gets the IP of a server
 	 *
 	 * @param String - name of server
 	 */
-	public static final String ServerIP = "BungeeCord";
+	public static final String ServerIP = "ServerIP";
 }
