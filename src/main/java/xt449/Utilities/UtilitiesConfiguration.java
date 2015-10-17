@@ -66,7 +66,7 @@ public abstract class UtilitiesConfiguration {
 		}
 	}
 
-	protected final Plugin getPlugin() {
+	protected Plugin getPlugin() {
 		return plugin;
 	}
 }
