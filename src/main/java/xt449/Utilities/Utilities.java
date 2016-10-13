@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 import xt449.Utilities.Command.DebugCommand;
+import xt449.Utilities.Test.Extra1;
 
 public class Utilities extends JavaPlugin {
 	
@@ -21,6 +22,8 @@ public class Utilities extends JavaPlugin {
 	@Override
 	public final void onEnable() {
 		new DebugCommand(this).register();
+		
+		Bukkit.getPluginManager().registerEvents(new Extra1(this), this);
 
 		// Log Plugin State
 		getLogger().info("Plugin - Enabled!");
@@ -33,7 +36,7 @@ public class Utilities extends JavaPlugin {
 	}
 	
 	public static final World getOverworld(World world) {
-		String name = world.getName();
+		final String name = world.getName();
 		
 		if(name.endsWith(netherPrefix)) {
 			World overworld = Bukkit.getServer().getWorld(world.getName().substring(0, world.getName().length() - 7));
