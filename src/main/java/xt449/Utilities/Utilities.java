@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 import xt449.Utilities.Command.DebugCommand;
-import xt449.Utilities.Test.Extra1;
 
 public class Utilities extends JavaPlugin {
 	
