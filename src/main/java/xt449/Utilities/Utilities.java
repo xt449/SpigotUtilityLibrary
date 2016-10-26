@@ -21,8 +21,6 @@ public class Utilities extends JavaPlugin {
 	@Override
 	public final void onEnable() {
 		new DebugCommand(this).register();
-		
-		Bukkit.getPluginManager().registerEvents(new Extra1(this), this);
 
 		// Log Plugin State
 		getLogger().info("Plugin - Enabled!");
