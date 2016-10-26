@@ -18,11 +18,13 @@ public class CustomEntity extends EntityLiving {
         try {
             Field bField = PathfinderGoalSelector.class.getDeclaredField("b");
             bField.setAccessible(true);
+
             Field cField = PathfinderGoalSelector.class.getDeclaredField("c");
             cField.setAccessible(true);
 
             bField.set(goalSelector, new UnsafeList<PathfinderGoalSelector>());
             bField.set(targetSelector, new UnsafeList<PathfinderGoalSelector>());
+
             cField.set(goalSelector, new UnsafeList<PathfinderGoalSelector>());
             cField.set(targetSelector, new UnsafeList<PathfinderGoalSelector>());
         } catch (Exception exc) {
