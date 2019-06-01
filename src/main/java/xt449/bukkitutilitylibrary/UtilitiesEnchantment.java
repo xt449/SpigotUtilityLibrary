@@ -1,4 +1,4 @@
-package xt449.utilities;
+package xt449.bukkitutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;

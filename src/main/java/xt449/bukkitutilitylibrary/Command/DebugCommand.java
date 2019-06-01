@@ -1,4 +1,4 @@
-package xt449.utilities.Command;
+package xt449.bukkitutilitylibrary.Command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -6,8 +6,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import xt449.utilities.UtilitiesCommand;
-import xt449.utilities.UtilitiesEnchantment;
+import xt449.bukkitutilitylibrary.UtilitiesCommand;
+import xt449.bukkitutilitylibrary.UtilitiesEnchantment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
 main: ${project.groupId}.${project.artifactId}.${project.name}
-name: Utilities
-version: 3.1.1
+name: ${project.name}
+version: ${project.version}
 load: STARTUP
 author: xt449
-authors: [Connor Spencer Harries]

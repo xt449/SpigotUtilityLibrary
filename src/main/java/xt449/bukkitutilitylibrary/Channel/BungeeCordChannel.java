@@ -1,4 +1,4 @@
-package xt449.utilities.Channel;
+package xt449.bukkitutilitylibrary.Channel;
 
 public class BungeeCordChannel {
 

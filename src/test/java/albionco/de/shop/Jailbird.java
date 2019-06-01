@@ -1,4 +1,4 @@
-package de.albionco.shop.utils;
+package albionco.de.shop;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

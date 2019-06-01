@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xt449</groupId>
-    <artifactId>utilities</artifactId>
-    <version>${minecraft.version}-3.1.0</version>
-    <name>Utilities</name>
+    <artifactId>bukkitutilitylibrary</artifactId>
+    <version>${minecraft.version}-4.0.0</version>
+    <name>BukkitUtilityLibrary</name>
 
     <properties>
         <minecraft.version>1.14.2</minecraft.version>
@@ -25,20 +25,16 @@
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>${minecraft.version}-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
 
-        <!--<dependency>
-	        <groupId>org.spigotmc</groupId>
-	        <artifactId>spigot-api</artifactId>
-	        <version>${minecraft.version}-R0.1-SNAPSHOT</version>
-	        <scope>provided</scope>
-        </dependency>-->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>16.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <directory>${project.basedir}/../BUILDS/${project.name}</directory>
-
         <resources>
             <resource>
                 <directory>src/main/resources/</directory>

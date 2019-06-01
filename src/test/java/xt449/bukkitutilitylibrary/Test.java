@@ -1,25 +1,16 @@
-package xt449.utilities.Test;
+package xt449.bukkitutilitylibrary;
 
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.ItemSpawnEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.awt.Color;
 
-public class Extra1 implements Listener {
+public class Test implements Listener {
 
-	private Plugin plugin;
-
-	public Extra1(final Plugin plugin) {
-		this.plugin = plugin;
-
+	public Test(final Plugin plugin) {
 		//init
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin,
 				new Runnable() {
@@ -161,25 +152,5 @@ public class Extra1 implements Listener {
 				},
 				0, 0
 		);
-	}
-
-	@EventHandler(priority = EventPriority.LOW)
-	public final void onPlayerSlotSwitch(PlayerItemHeldEvent event) {
-		final Player player = event.getPlayer();
-
-		player.sendMessage(String.valueOf(event.getNewSlot()) + ChatColor.AQUA + "(" + (event.getNewSlot() - event.getPreviousSlot()) + ")");
-
-		final ItemStack item = player.getInventory().getItem(event.getNewSlot());
-
-		if(item != null && item.getType() == Material.FEATHER) {
-			player.setGravity(false);
-		} else {
-			player.setGravity(true);
-		}
-	}
-
-	@EventHandler(priority = EventPriority.LOWEST)
-	public final void onItemSpawn(ItemSpawnEvent event) {
-		event.getEntity().setGravity(false);
 	}
 }
