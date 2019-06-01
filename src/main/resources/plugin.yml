@@ -1,6 +1,6 @@
-main: xt449.Utilities.Utilities
+main: ${project.groupId}.${project.artifactId}.${project.name}
 name: Utilities
-version: 3.1.0
+version: 3.1.1
 load: STARTUP
 author: xt449
 authors: [Connor Spencer Harries]

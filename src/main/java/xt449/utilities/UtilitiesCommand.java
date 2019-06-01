@@ -1,4 +1,4 @@
-package xt449.Utilities;
+package xt449.utilities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,25 +13,25 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public abstract class UtilitiesCommand extends Command implements PluginIdentifiableCommand {
-	
+
 	public static final String MISSING_PERMISSION = ChatColor.RED + "You do not have permission to perform this command!";
-	
+
 	private static CommandMap commandMap;
-	
+
 	private Plugin plugin;
-	
+
 	protected UtilitiesCommand(Plugin plugin, String name) {
 		super(name);
-		
+
 		this.plugin = plugin;
-		
+
 		setAliases(getAliases());
 		setDescription(getDescription());
 		setPermission(getPermission());
 		setPermissionMessage(UtilitiesCommand.MISSING_PERMISSION);
 		setUsage(getUsage());
 	}
-	
+
 	@Override
 	public final boolean execute(CommandSender sender, String alias, String[] args) {
 		if(plugin.isEnabled()) {
@@ -43,10 +43,10 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	@Override
 	public final List<String> tabComplete(CommandSender sender, String alias, String[] args) {
 		if(plugin.isEnabled()) {
@@ -58,21 +58,21 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 				}
 			}
 		}
-		
+
 		return null;
 	}
 
 	public final Plugin getPlugin() {
 		return plugin;
 	}
-	
+
 	public final void register() {
 		if(UtilitiesCommand.commandMap == null) {
 			try {
 				Field cm = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-				
+
 				cm.setAccessible(true);
-				
+
 				commandMap = (CommandMap) cm.get(Bukkit.getServer());
 			} catch(RuntimeException exc) {
 				exc.printStackTrace();
@@ -80,10 +80,10 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 				exc.printStackTrace();
 			}
 		}
-		
+
 		UtilitiesCommand.commandMap.register(plugin.getName(), this);
 	}
-	
+
 	private final boolean hasPermission(CommandSender sender) {
 		if(getPermission() != null) {
 			if(sender.hasPermission(getPermission())) {
@@ -92,19 +92,19 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 				if(!getPermissionMessage().isEmpty()) {
 					sender.sendMessage(getPermissionMessage());
 				}
-				
+
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	protected abstract boolean onPlayerExecute(Player sender, String alias, String[] args);
-	
+
 	protected abstract boolean onConsoleExecute(CommandSender sender, String alias, String[] args);
-	
+
 	protected abstract List<String> onPlayerTab(Player sender, String alias, String[] args);
-	
+
 	protected abstract List<String> onConsoleTab(CommandSender sender, String alias, String[] args);
 }

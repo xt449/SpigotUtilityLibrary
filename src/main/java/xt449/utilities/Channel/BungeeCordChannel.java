@@ -1,18 +1,18 @@
-package xt449.Utilities.Channel;
+package xt449.utilities.Channel;
 
 public class BungeeCordChannel {
-	
+
 	/**
 	 * BungeeCord channel for plugin messaging
 	 */
-	public static final String channel = "BungeeCord";
-	
+	public static final String CHANNEL = "BungeeCord";
+
 	/**
 	 * Connects the player to a server
 	 *
 	 * @param String - name of server (as defined in BungeeCord config.yml)
 	 */
-	public static final String Connect = "Connect";
+	public static final String CONNECT = "Connect";
 
 	/**
 	 * Connects a player to a server
@@ -20,45 +20,45 @@ public class BungeeCordChannel {
 	 * @param String - name of player
 	 * @param String - name of server (as defined in BungeeCord config.yml)
 	 */
-	public static final String ConnectOther = "ConnectOther";
-	
+	public static final String CONNECTOTHER = "ConnectOther";
+
 	/**
 	 * Gets the IP of the player
 	 */
 	public static final String IP = "IP";
-	
+
 	/**
 	 * Gets the amount of players on a server |OR| ALL the servers
 	 *
 	 * @param String - name of server (as defined in BungeeCord config.yml) |OR| ALL (for global count)
 	 */
-	public static final String PlayerCount = "PlayerCount";
-	
+	public static final String PLAYERCOUNT = "PlayerCount";
+
 	/**
 	 * Gets the list of players on a server |OR| ALL the servers
 	 *
 	 * @param String - name of server (as defined in BungeeCord config.yml) |OR| ALL (for global count)
 	 */
-	public static final String PlayerList = "PlayerList";
-	
+	public static final String PLAYERLIST = "PlayerList";
+
 	/**
 	 * Gets the list of server names (as defined in BungeeCord config.yml)
 	 */
-	public static final String GetServers = "GetServers";
-	
+	public static final String GETSERVERS = "GetServers";
+
 	/**
 	 * Sends a message to a player
 	 *
 	 * @param String - name of player
 	 * @param String - message to send
 	 */
-	public static final String Message = "Message";
-	
+	public static final String MESSAGE = "Message";
+
 	/**
 	 * Gets the name of the server to which the player is connected
 	 */
-	public static final String GetServer = "GetServer";
-	
+	public static final String GETSERVER = "GetServer";
+
 	/**
 	 * Send a plugin message to a server |OR| ALL the servers
 	 *
@@ -67,24 +67,24 @@ public class BungeeCordChannel {
 	 * @param Short - size of message
 	 * @param Byte[] - message
 	 */
-	public static final String Forward = "Forward";
-	
+	public static final String FORWARD = "Forward";
+
 	/**
 	 * Gets the UUID of the player
 	 */
 	public static final String UUID = "UUID";
-	
+
 	/**
 	 * Gets the UUID of a player
 	 *
 	 * @param String - name of player
 	 */
-	public static final String UUIDOther = "UUIDOther";
-	
+	public static final String UUIDOTHER = "UUIDOther";
+
 	/**
 	 * Gets the IP of a server
 	 *
 	 * @param String - name of server
 	 */
-	public static final String ServerIP = "ServerIP";
+	public static final String SERVERIP = "ServerIP";
 }

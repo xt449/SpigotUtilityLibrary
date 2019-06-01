@@ -5,52 +5,55 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xt449</groupId>
-    <artifactId>Utilities</artifactId>
-	<version>1.10.2-3.1.0</version>
+    <artifactId>utilities</artifactId>
+    <version>${minecraft.version}-3.1.0</version>
+    <name>Utilities</name>
+
+    <properties>
+        <minecraft.version>1.14.2</minecraft.version>
+    </properties>
 
     <repositories>
         <repository>
             <id>spigot-nexus</id>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
     <dependencies>
-        <!-- CONTAINS JAVADOC -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>LATEST</version>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>${minecraft.version}-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
-	
-	    <!-- DOES NOT CONTAIN JAVADOC -->
-	    <dependency>
-		    <groupId>org.bukkit</groupId>
-		    <artifactId>craftbukkit</artifactId>
-		    <version>LOCAL</version>
-		    <scope>system</scope>
-		    <systemPath>${project.basedir}/../API/craftbukkit-1.10.2.jar</systemPath>
-	    </dependency>
+
+        <!--<dependency>
+	        <groupId>org.spigotmc</groupId>
+	        <artifactId>spigot-api</artifactId>
+	        <version>${minecraft.version}-R0.1-SNAPSHOT</version>
+	        <scope>provided</scope>
+        </dependency>-->
     </dependencies>
 
     <build>
-        <defaultGoal>clean package install</defaultGoal>
-        <directory>${project.basedir}/../BUILDS/${project.artifactId}</directory>
+        <directory>${project.basedir}/../BUILDS/${project.name}</directory>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-	            <!--<version>2.6</version>-->
-
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
                 <configuration>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-
-                        <manifestEntries>
-                            <Built-By>xt449</Built-By>
-                        </manifestEntries>
-                    </archive>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>

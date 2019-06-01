@@ -1,4 +1,4 @@
-package xt449.Utilities;
+package xt449.utilities;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;

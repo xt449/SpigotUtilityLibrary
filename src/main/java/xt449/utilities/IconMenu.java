@@ -1,4 +1,4 @@
-package xt449.Utilities;
+package xt449.utilities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -74,35 +74,45 @@ public class IconMenu implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	void onInventoryClick(InventoryClickEvent event) {
-		if(event.getInventory().getTitle().equals(name) && (player == null || event.getWhoClicked() == player)) {
-			event.setCancelled(true);
-			if(event.getClick() != ClickType.LEFT) { return; }
-			int slot = event.getRawSlot();
-			if(slot >= 0 && slot < size && optionNames[slot] != null) {
-				Plugin plugin = this.plugin;
-				OptionClickEvent e = new OptionClickEvent((Player) event.getWhoClicked(), slot, optionNames[slot], optionIcons[slot]);
-				handler.onOptionClick(e);
-				((Player) event.getWhoClicked()).updateInventory();
-				if(e.willClose()) {
-					final Player p = (Player) event.getWhoClicked();
-					Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-						public void run() {
-							p.closeInventory();
-						}
-					});
-				}
-				if(e.willDestroy()) {
-					destroy();
-				}
+		//if(event.getInventory().getHolder().getInventory(); ////.getTitle().equals(name) && (player == null || event.getWhoClicked() == player)) {
+		event.setCancelled(true);
+		if(event.getClick() != ClickType.LEFT) {
+			return;
+		}
+		int slot = event.getRawSlot();
+		if(slot >= 0 && slot < size && optionNames[slot] != null) {
+			Plugin plugin = this.plugin;
+			OptionClickEvent e = new OptionClickEvent((Player) event.getWhoClicked(), slot, optionNames[slot], optionIcons[slot]);
+			handler.onOptionClick(e);
+			((Player) event.getWhoClicked()).updateInventory();
+			if(e.willClose()) {
+				final Player p = (Player) event.getWhoClicked();
+				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+					public void run() {
+						p.closeInventory();
+					}
+				});
+			}
+			if(e.willDestroy()) {
+				destroy();
 			}
 		}
+		//}
 	}
 
-	public interface OptionClickEventHandler {
+	private ItemStack setItemNameAndLore(ItemStack item, String name, String[] lore) {
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName(name);
+		im.setLore(Arrays.asList(lore));
+		item.setItemMeta(im);
+		return item;
+	}
+
+	interface OptionClickEventHandler {
 		void onOptionClick(OptionClickEvent event);
 	}
 
-	public class OptionClickEvent {
+	class OptionClickEvent {
 		private Player player;
 		private int position;
 		private String name;
@@ -150,13 +160,5 @@ public class IconMenu implements Listener {
 		public ItemStack getItem() {
 			return item;
 		}
-	}
-
-	private ItemStack setItemNameAndLore(ItemStack item, String name, String[] lore) {
-		ItemMeta im = item.getItemMeta();
-		im.setDisplayName(name);
-		im.setLore(Arrays.asList(lore));
-		item.setItemMeta(im);
-		return item;
 	}
 }
