@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 public class ExampleConfiguration extends AbstractConfiguration {
 
-	public ExampleConfiguration(Plugin plugin) {
+	ExampleConfiguration(Plugin plugin) {
 		super(plugin, "config.yml");
 
 		header = "Example configuation header";

@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary;
+package xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -8,19 +8,21 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
 import java.util.List;
 
-public abstract class UtilitiesCommand extends Command implements PluginIdentifiableCommand {
+public abstract class AbstractCommand extends Command implements PluginIdentifiableCommand {
 
-	public static final String MISSING_PERMISSION = ChatColor.RED + "You do not have permission to perform this command!";
+	private static final String MISSING_PERMISSION = ChatColor.RED + "You do not have permission to perform this command!";
 
 	private static CommandMap commandMap;
 
 	private Plugin plugin;
 
-	protected UtilitiesCommand(Plugin plugin, String name) {
+	protected AbstractCommand(Plugin plugin, String name) {
 		super(name);
 
 		this.plugin = plugin;
@@ -28,12 +30,12 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 		setAliases(getAliases());
 		setDescription(getDescription());
 		setPermission(getPermission());
-		setPermissionMessage(UtilitiesCommand.MISSING_PERMISSION);
+		setPermissionMessage(AbstractCommand.MISSING_PERMISSION);
 		setUsage(getUsage());
 	}
 
 	@Override
-	public final boolean execute(CommandSender sender, String alias, String[] args) {
+	public final boolean execute(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
 		if(plugin.isEnabled()) {
 			if(hasPermission(sender)) {
 				if(sender instanceof Player) {
@@ -47,8 +49,9 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 		return false;
 	}
 
+	@NotNull
 	@Override
-	public final List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+	public final List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
 		if(plugin.isEnabled()) {
 			if(hasPermission(sender)) {
 				if(sender instanceof Player) {
@@ -59,32 +62,32 @@ public abstract class UtilitiesCommand extends Command implements PluginIdentifi
 			}
 		}
 
-		return null;
+		return Collections.emptyList();
 	}
 
+	@NotNull
+	@Override
 	public final Plugin getPlugin() {
 		return plugin;
 	}
 
 	public final void register() {
-		if(UtilitiesCommand.commandMap == null) {
+		if(AbstractCommand.commandMap == null) {
 			try {
 				Field cm = Bukkit.getServer().getClass().getDeclaredField("commandMap");
 
 				cm.setAccessible(true);
 
 				commandMap = (CommandMap) cm.get(Bukkit.getServer());
-			} catch(RuntimeException exc) {
-				exc.printStackTrace();
-			} catch(ReflectiveOperationException exc) {
+			} catch(RuntimeException | ReflectiveOperationException exc) {
 				exc.printStackTrace();
 			}
 		}
 
-		UtilitiesCommand.commandMap.register(plugin.getName(), this);
+		AbstractCommand.commandMap.register(plugin.getName(), this);
 	}
 
-	private final boolean hasPermission(CommandSender sender) {
+	private boolean hasPermission(CommandSender sender) {
 		if(getPermission() != null) {
 			if(sender.hasPermission(getPermission())) {
 				return true;

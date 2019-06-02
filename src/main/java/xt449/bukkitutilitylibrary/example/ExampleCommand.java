@@ -1,25 +1,28 @@
-package xt449.bukkitutilitylibrary.Command;
+package xt449.bukkitutilitylibrary.example;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-import xt449.bukkitutilitylibrary.UtilitiesCommand;
-import xt449.bukkitutilitylibrary.UtilitiesEnchantment;
+import xt449.bukkitutilitylibrary.AbstractCommand;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DebugCommand extends UtilitiesCommand {
+public class ExampleCommand extends AbstractCommand {
 
 	private final String permission_execute = "utlities.debug";
 
-	public DebugCommand(Plugin plugin) {
+	private final Enchantment enchantment;
+
+	ExampleCommand(ExamplePlugin plugin, Enchantment enchantment) {
 		super(plugin, "debug");
 
 		setPermission(permission_execute);
+
+		this.enchantment = enchantment;
 	}
 
 	@Override
@@ -40,7 +43,7 @@ public class DebugCommand extends UtilitiesCommand {
 		sender.sendMessage(ChatColor.AQUA + "UniqueID: " + ChatColor.WHITE + sender.getUniqueId().toString());
 
 		if(sender.isOp()) {
-			sender.getItemInHand().addUnsafeEnchantment(UtilitiesEnchantment.getEnchantment(), 1);
+			sender.getInventory().getItemInMainHand().addUnsafeEnchantment(enchantment, 1);
 		}
 
 		return true;
