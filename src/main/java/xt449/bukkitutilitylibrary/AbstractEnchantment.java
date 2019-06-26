@@ -7,11 +7,15 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractEnchantment extends Enchantment {
 
-	protected final String name;
+	protected String name;
 
 	public AbstractEnchantment(@NotNull Plugin plugin, @NotNull String id) {
 		super(new NamespacedKey(plugin, id));
-		name = id;
+	}
+
+	public AbstractEnchantment(@NotNull Plugin plugin, @NotNull String id, @NotNull String name) {
+		super(new NamespacedKey(plugin, id));
+		this.name = name;
 	}
 
 	@Override
