@@ -50,7 +50,8 @@ public class InventoryInterfaceManager {
 		if(!initialized) {
 			throw new IllegalMonitorStateException("InventoryInterfaceManager was not initialized by any plugin!");
 		} else {
-			return inventoryInterfaces.put(uuid, inventoryInterface);
+			inventoryInterfaces.put(uuid, inventoryInterface);
+			return inventoryInterface;
 		}
 	}
 
