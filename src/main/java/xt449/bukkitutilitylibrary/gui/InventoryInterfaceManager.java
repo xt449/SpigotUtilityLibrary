@@ -1,5 +1,7 @@
 package xt449.bukkitutilitylibrary.gui;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -9,13 +11,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class InventoryInterfaceManager {
 
-	private static Map<UUID, InventoryInterface> inventoryInterfaces = new HashMap<>();
+	private static BiMap<UUID, InventoryInterface> inventoryInterfaces = HashBiMap.create(2);
 	private static boolean initialized = false;
 
 	public static void initialize(Plugin plugin) {
@@ -53,6 +53,10 @@ public class InventoryInterfaceManager {
 			inventoryInterfaces.put(uuid, inventoryInterface);
 			return inventoryInterface;
 		}
+	}
+
+	public static boolean unregister(InventoryInterface inventoryInterface) {
+		return inventoryInterfaces.inverse().remove(inventoryInterface) != null;
 	}
 
 	private static InventoryInterface getInventoryInterface(InventoryInterfaceHolder holder) {
