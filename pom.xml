@@ -6,7 +6,7 @@
 
     <groupId>xt449</groupId>
     <artifactId>bukkitutilitylibrary</artifactId>
-    <version>${minecraft.version}-4.1.1</version>
+    <version>${minecraft.version}-4.1.3</version>
     <name>BukkitUtilityLibrary</name>
 
     <properties>
@@ -25,12 +25,21 @@
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>${minecraft.version}-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
+
+        <!--<dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${minecraft.version}-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>-->
 
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>16.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -46,8 +55,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
+                    <excludes>
+                        <exclude>xt449/bukkitutilitylibrary/example/</exclude>
+                    </excludes>
                     <source>8</source>
                     <target>8</target>
                 </configuration>

@@ -3,11 +3,7 @@ package xt449.bukkitutilitylibrary;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
 
-/**
- * @author xt449
- * Copyright BinaryBanana/xt449 2019
- * All Rights Reserved
- */
+@Deprecated
 public class CustomEntityBuilder<T extends Entity> {
 
 	private final Class<T> entityType;

@@ -22,9 +22,15 @@ public class EnchantmentUtility {
 	/**
 	 * @param enchantment to be registered
 	 * @throws IllegalArgumentException an enchantment with the same name or id already is registered.
+	 * @return true if enchantment was registered successfully
 	 */
-	public static void registerEnchantment(Enchantment enchantment) throws IllegalArgumentException {
+	public static boolean registerEnchantment(Enchantment enchantment) throws IllegalArgumentException {
 		prepareRegistration();
-		Enchantment.registerEnchantment(enchantment);
+		try {
+			Enchantment.registerEnchantment(enchantment);
+			return true;
+		} catch(IllegalArgumentException ignored) {
+			return false;
+		}
 	}
 }
