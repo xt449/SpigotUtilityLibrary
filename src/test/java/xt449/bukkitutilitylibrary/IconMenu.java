@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary.gui;
+package xt449.bukkitutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -86,12 +86,8 @@ public class IconMenu implements Listener {
 			handler.onOptionClick(e);
 			((Player) event.getWhoClicked()).updateInventory();
 			if(e.willClose()) {
-				final Player p = (Player) event.getWhoClicked();
-				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-					public void run() {
-						p.closeInventory();
-					}
-				});
+				final Player player = (Player) event.getWhoClicked();
+				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, player::closeInventory);
 			}
 			if(e.willDestroy()) {
 				destroy();

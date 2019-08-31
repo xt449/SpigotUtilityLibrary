@@ -2,6 +2,7 @@ package xt449.bukkitutilitylibrary;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +17,10 @@ public abstract class AbstractConfiguration {
 
 	protected String header = null;
 
-	public AbstractConfiguration(Plugin plugin, String filePath) {
+	///**
+	// * @param plugin - may be not enabled plugin
+	// */
+	protected AbstractConfiguration(@NotNull Plugin plugin, @NotNull String filePath) {
 		this.plugin = plugin;
 		this.filePath = filePath;
 	}

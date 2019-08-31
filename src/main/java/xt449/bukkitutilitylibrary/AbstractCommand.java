@@ -103,11 +103,11 @@ public abstract class AbstractCommand extends Command implements PluginIdentifia
 		return true;
 	}
 
-	protected abstract boolean onPlayerExecute(Player sender, String alias, String[] args);
+	protected abstract boolean onPlayerExecute(@NotNull Player sender, @NotNull String alias, @NotNull String[] args);
 
-	protected abstract boolean onConsoleExecute(CommandSender sender, String alias, String[] args);
+	protected abstract boolean onConsoleExecute(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args);
 
-	protected abstract List<String> onPlayerTab(Player sender, String alias, String[] args);
+	protected abstract List<String> onPlayerTab(@NotNull Player sender, @NotNull String alias, @NotNull String[] args);
 
-	protected abstract List<String> onConsoleTab(CommandSender sender, String alias, String[] args);
+	protected abstract List<String> onConsoleTab(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args);
 }

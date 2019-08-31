@@ -1,6 +1,6 @@
 package xt449.bukkitutilitylibrary.constants;
 
-public class BungeeCordChannel {
+public final class BungeeCordChannel {
 
 	/**
 	 * BungeeCord channel for plugin messaging

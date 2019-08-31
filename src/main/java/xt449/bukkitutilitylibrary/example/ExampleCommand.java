@@ -6,12 +6,13 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import xt449.bukkitutilitylibrary.AbstractCommand;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExampleCommand extends AbstractCommand {
+public final class ExampleCommand extends AbstractCommand {
 
 	private final String permission_execute = "utlities.debug";
 
@@ -26,7 +27,7 @@ public class ExampleCommand extends AbstractCommand {
 	}
 
 	@Override
-	protected final boolean onPlayerExecute(Player sender, String alias, String[] args) {
+	protected final boolean onPlayerExecute(@NotNull Player sender, @NotNull String alias, @NotNull String[] args) {
 		sender.sendMessage(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "]|[ ]|[ ]|[ SERVER DEBUG ]|[ ]|[ ]|[");
 		sender.sendMessage(ChatColor.AQUA + "Server: " + ChatColor.WHITE + Bukkit.getServer().getName());
 		sender.sendMessage(ChatColor.AQUA + "Version: " + ChatColor.WHITE + Bukkit.getName() + " " + Bukkit.getBukkitVersion());
@@ -50,17 +51,17 @@ public class ExampleCommand extends AbstractCommand {
 	}
 
 	@Override
-	protected final boolean onConsoleExecute(CommandSender sender, String alias, String[] args) {
+	protected final boolean onConsoleExecute(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
 		return true;
 	}
 
 	@Override
-	protected final List<String> onPlayerTab(Player sender, String alias, String[] args) {
+	protected final List<String> onPlayerTab(@NotNull Player sender, @NotNull String alias, @NotNull String[] args) {
 		return onConsoleTab(sender, alias, args);
 	}
 
 	@Override
-	protected final List<String> onConsoleTab(CommandSender sender, String alias, String[] args) {
+	protected final List<String> onConsoleTab(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
 		List<String> players = new ArrayList<>();
 
 		for(OfflinePlayer player : Bukkit.getOfflinePlayers()) {

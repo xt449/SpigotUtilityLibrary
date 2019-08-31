@@ -3,6 +3,7 @@ package xt449.bukkitutilitylibrary.gui;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 public class InventoryInterface {
 	private final Inventory inventory;
@@ -20,13 +21,13 @@ public class InventoryInterface {
 	final void onClick(InventoryClickEvent event) {
 		InventoryInterfaceItem item = this.items[event.getSlot()];
 
-		if (item != null) {
+		if(item != null) {
 			item.triggerAction(event);
 		}
 	}
 
-	public void displayTo(Player player) {
-		if (this.autoUpdate) {
+	public void displayTo(@NotNull Player player) {
+		if(this.autoUpdate) {
 			this.update();
 		}
 
@@ -34,8 +35,8 @@ public class InventoryInterface {
 	}
 
 	public void display() {
-		if (this.player != null) {
-			if (this.autoUpdate) {
+		if(this.player != null) {
+			if(this.autoUpdate) {
 				this.update();
 			}
 
@@ -46,8 +47,8 @@ public class InventoryInterface {
 
 	public void update() {
 		for(int slot = 0; slot < this.items.length; ++slot) {
-			if (this.items[slot] instanceof UpdatingInventoryInterfaceItem) {
-				this.inventory.setItem(slot, ((UpdatingInventoryInterfaceItem)this.items[slot]).triggerUpdate(this.player, this.inventory.getItem(slot)));
+			if(this.items[slot] instanceof UpdatingInventoryInterfaceItem) {
+				this.inventory.setItem(slot, ((UpdatingInventoryInterfaceItem) this.items[slot]).triggerUpdate(this.player, this.inventory.getItem(slot)));
 			}
 		}
 	}

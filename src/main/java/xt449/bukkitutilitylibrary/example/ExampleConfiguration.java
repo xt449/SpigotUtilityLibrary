@@ -6,7 +6,7 @@ import xt449.bukkitutilitylibrary.AbstractConfiguration;
 
 import java.io.InputStreamReader;
 
-public class ExampleConfiguration extends AbstractConfiguration {
+public final class ExampleConfiguration extends AbstractConfiguration {
 
 	ExampleConfiguration(Plugin plugin) {
 		super(plugin, "config.yml");

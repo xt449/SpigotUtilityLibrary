@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
-public class EffectEnchantment extends Enchantment {
+public final class EffectEnchantment extends Enchantment {
 
 	EffectEnchantment(Plugin plugin) {
 		super(new NamespacedKey(plugin, "effect"));

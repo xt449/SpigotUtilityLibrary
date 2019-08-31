@@ -27,7 +27,7 @@ public class InventoryInterfaceManager {
 						event.setCancelled(true);
 						event.setResult(Event.Result.DENY);
 						if(event.getClickedInventory() == event.getView().getTopInventory()) {
-							InventoryInterfaceManager.getInventoryInterface((InventoryInterfaceHolder)event.getClickedInventory().getHolder()).onClick(event);
+							InventoryInterfaceManager.getInventoryInterface((InventoryInterfaceHolder) event.getClickedInventory().getHolder()).onClick(event);
 						}
 					}
 
