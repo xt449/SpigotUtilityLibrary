@@ -50,6 +50,7 @@ public class InventoryInterfaceBuilder {
 		return this;
 	}
 
+	/*@Deprecated
 	public InventoryInterface build() {
 		Inventory inventory = Bukkit.createInventory(this.holder, this.items.length, this.title);
 
@@ -61,5 +62,18 @@ public class InventoryInterfaceBuilder {
 
 		this.holder.inventory = inventory;
 		return InventoryInterfaceManager.register(this.holder.uuid, new InventoryInterface(inventory, this.items, this.player, this.autoUpdate));
+	}*/
+
+	public InventoryInterface build() {
+		final Inventory inventory = Bukkit.createInventory(this.holder, this.items.length, this.title);
+		this.holder.inventory = inventory;
+
+		for(int i = 0; i < this.items.length; ++i) {
+			if(this.items[i] != null) {
+				inventory.setItem(i, this.items[i].itemStack);
+			}
+		}
+
+		return new InventoryInterface(inventory, this.items, this.player, this.autoUpdate);
 	}
 }

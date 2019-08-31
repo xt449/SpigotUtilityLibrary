@@ -4,14 +4,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class InventoryInterface {
-	private final Inventory inventory;
+	final Inventory inventory;
 	private final InventoryInterfaceItem[] items;
 	private final Player player;
 	private final boolean autoUpdate;
 
-	InventoryInterface(Inventory inventory, InventoryInterfaceItem[] items, Player player, boolean autoUpdate) {
+	InventoryInterface(Inventory inventory, InventoryInterfaceItem[] items, @Nullable Player player, boolean autoUpdate) {
 		this.inventory = inventory;
 		this.items = items;
 		this.player = player;

@@ -46,9 +46,21 @@ public class InventoryInterfaceManager {
 		}
 	}
 
+	static void register(InventoryInterface inventoryInterface) {
+		if(!initialized) {
+			throw new IllegalStateException("InventoryInterfaceManager has not been initialized by any plugin!");
+		} else {
+			if(inventoryInterface.inventory.getHolder() instanceof InventoryInterfaceHolder) {
+				inventoryInterfaces.put(((InventoryInterfaceHolder) inventoryInterface.inventory.getHolder()).uuid, inventoryInterface);
+			} else {
+				throw new IllegalArgumentException("Parameter inventoryInterface was not built properly!");
+			}
+		}
+	}
+
 	static InventoryInterface register(UUID uuid, InventoryInterface inventoryInterface) {
 		if(!initialized) {
-			throw new IllegalMonitorStateException("InventoryInterfaceManager was not initialized by any plugin!");
+			throw new IllegalStateException("InventoryInterfaceManager has not been initialized by any plugin!");
 		} else {
 			inventoryInterfaces.put(uuid, inventoryInterface);
 			return inventoryInterface;

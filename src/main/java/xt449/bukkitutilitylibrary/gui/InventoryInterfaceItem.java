@@ -5,7 +5,9 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("WeakerAccess")
 public class InventoryInterfaceItem {
 
 	final ItemStack itemStack;
@@ -28,6 +30,6 @@ public class InventoryInterfaceItem {
 		 * @param click        The associated ClickType
 		 * @param hotbarButton The associated hot-bar button value
 		 */
-		void onClick(Inventory inventory, Player player, int slot, ClickType click, int hotbarButton);
+		void onClick(@Nullable Inventory inventory, Player player, int slot, ClickType click, int hotbarButton);
 	}
 }

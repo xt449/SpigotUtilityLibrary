@@ -12,11 +12,15 @@ public class UpdatingInventoryInterfaceItem extends InventoryInterfaceItem {
 		this.updater = updater;
 	}
 
-	final ItemStack triggerUpdate(@Nullable Player player, ItemStack itemStack) {
+	final ItemStack triggerUpdate(@Nullable Player player, @Nullable ItemStack itemStack) {
 		return this.updater.update(player, itemStack);
 	}
 
 	public interface Updater {
-		ItemStack update(Player var1, ItemStack var2);
+		/**
+		 * @param player    The associated Player
+		 * @param itemStack The associated ItemStack
+		 */
+		ItemStack update(@Nullable Player player, @Nullable ItemStack itemStack);
 	}
 }
