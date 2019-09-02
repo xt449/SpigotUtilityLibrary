@@ -20,7 +20,7 @@ public abstract class AbstractConfiguration {
 	///**
 	// * @param plugin - may be not enabled plugin
 	// */
-	protected AbstractConfiguration(@NotNull Plugin plugin, @NotNull String filePath) {
+	protected AbstractConfiguration(@NotNull final Plugin plugin, @NotNull final String filePath) {
 		this.plugin = plugin;
 		this.filePath = filePath;
 	}

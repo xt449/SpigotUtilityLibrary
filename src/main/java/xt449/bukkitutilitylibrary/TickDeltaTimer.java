@@ -2,6 +2,7 @@ package xt449.bukkitutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
@@ -13,7 +14,7 @@ public final class TickDeltaTimer {
 
 	private static float smartTPS = 20;
 
-	public static void startTimer(final Plugin plugin) {
+	public static void startTimer(@NotNull final Plugin plugin) {
 		lastTimeMillis = System.currentTimeMillis();
 
 		Bukkit.getScheduler().runTaskTimer(plugin, () -> {
@@ -31,7 +32,7 @@ public final class TickDeltaTimer {
 		}, 0, 1);
 	}
 
-	public static void startTimer(final Plugin plugin, Consumer<Integer> consumer, boolean updateOnly) {
+	public static void startTimer(@NotNull final Plugin plugin, @NotNull final Consumer<Integer> consumer, final boolean updateOnly) {
 		lastTimeMillis = System.currentTimeMillis();
 
 		if(updateOnly) {
@@ -70,7 +71,7 @@ public final class TickDeltaTimer {
 		}
 	}
 
-	public static void startTimerSmartly(final Plugin plugin, Consumer<Float> consumer, boolean updateOnly) {
+	public static void startTimerSmartly(@NotNull final Plugin plugin, @NotNull final Consumer<Float> consumer, final boolean updateOnly) {
 		lastTimeMillis = System.currentTimeMillis();
 
 		if(updateOnly) {

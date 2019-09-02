@@ -2,6 +2,7 @@ package xt449.bukkitutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -12,7 +13,7 @@ public final class TickTimeTimer {
 
 	private static float smartTPS = 20;
 
-	public static void startTimer(final Plugin plugin) {
+	public static void startTimer(@NotNull final Plugin plugin) {
 		lastTimeMillis = System.currentTimeMillis();
 
 		Bukkit.getScheduler().runTaskTimer(plugin, () -> {
@@ -28,7 +29,7 @@ public final class TickTimeTimer {
 		}, 0, 1);
 	}
 
-	public static void startTimer(final Plugin plugin, Consumer<Float> consumer) {
+	public static void startTimer(@NotNull final Plugin plugin, @NotNull final Consumer<Float> consumer) {
 		lastTimeMillis = System.currentTimeMillis();
 
 		Bukkit.getScheduler().runTaskTimer(plugin, () -> {
@@ -45,7 +46,7 @@ public final class TickTimeTimer {
 		}, 0, 1);
 	}
 
-	public static void startTimerSmarty(final Plugin plugin, Consumer<Float> consumer) {
+	public static void startTimerSmarty(@NotNull final Plugin plugin, @NotNull final Consumer<Float> consumer) {
 		lastTimeMillis = System.currentTimeMillis();
 
 		Bukkit.getScheduler().runTaskTimer(plugin, () -> {

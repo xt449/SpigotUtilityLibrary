@@ -1,6 +1,7 @@
 package xt449.bukkitutilitylibrary;
 
 import org.bukkit.enchantments.Enchantment;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 
@@ -24,7 +25,7 @@ public class EnchantmentUtility {
 	 * @return true if enchantment was registered successfully
 	 * @throws IllegalArgumentException an enchantment with the same name or id already is registered.
 	 */
-	public static boolean registerEnchantment(Enchantment enchantment) throws IllegalArgumentException {
+	public static boolean registerEnchantment(@NotNull Enchantment enchantment) throws IllegalArgumentException {
 		prepareRegistration();
 		try {
 			Enchantment.registerEnchantment(enchantment);

@@ -2,32 +2,25 @@ package xt449.bukkitutilitylibrary.example;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import xt449.bukkitutilitylibrary.AbstractCommand;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class ExampleCommand extends AbstractCommand {
-
-	private final String permission_execute = "utlities.debug";
 
 	private final Enchantment enchantment;
 
-	ExampleCommand(ExamplePlugin plugin, Enchantment enchantment) {
+	ExampleCommand(@NotNull final ExamplePlugin plugin, @NotNull final Enchantment enchantment) {
 		super(plugin, "debug");
 
-		setPermission(permission_execute);
+		setPermission("utlities.debug");
 
 		this.enchantment = enchantment;
 	}
 
 	@Override
-	protected final boolean onPlayerExecute(@NotNull Player sender, @NotNull String alias, @NotNull String[] args) {
+	protected final boolean onPlayerExecute(@NotNull final Player sender, @NotNull final String alias, @NotNull final String[] args) {
 		sender.sendMessage(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "]|[ ]|[ ]|[ SERVER DEBUG ]|[ ]|[ ]|[");
 		sender.sendMessage(ChatColor.AQUA + "Server: " + ChatColor.WHITE + Bukkit.getServer().getName());
 		sender.sendMessage(ChatColor.AQUA + "Version: " + ChatColor.WHITE + Bukkit.getName() + " " + Bukkit.getBukkitVersion());
@@ -48,26 +41,5 @@ public final class ExampleCommand extends AbstractCommand {
 		}
 
 		return true;
-	}
-
-	@Override
-	protected final boolean onConsoleExecute(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
-		return true;
-	}
-
-	@Override
-	protected final List<String> onPlayerTab(@NotNull Player sender, @NotNull String alias, @NotNull String[] args) {
-		return onConsoleTab(sender, alias, args);
-	}
-
-	@Override
-	protected final List<String> onConsoleTab(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
-		List<String> players = new ArrayList<>();
-
-		for(OfflinePlayer player : Bukkit.getOfflinePlayers()) {
-			players.add(player.getName());
-		}
-
-		return players;
 	}
 }

@@ -9,18 +9,18 @@ import org.jetbrains.annotations.NotNull;
 
 public final class EffectEnchantment extends Enchantment {
 
-	EffectEnchantment(Plugin plugin) {
+	EffectEnchantment(@NotNull final Plugin plugin) {
 		super(new NamespacedKey(plugin, "effect"));
 	}
 
 	@Override
-	public boolean canEnchantItem(@NotNull ItemStack item) {
+	public boolean canEnchantItem(@NotNull final ItemStack item) {
 		return true;
 	}
 
 	@Override
-	public boolean conflictsWith(Enchantment other) {
-		return other.equals(this);
+	public boolean conflictsWith(final Enchantment other) {
+		return this.equals(other);
 	}
 
 	@Override

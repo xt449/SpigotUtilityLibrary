@@ -4,8 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class InventoryInterfaceBuilder {
+
 	private final InventoryInterfaceItem[] items;
 	private final String title;
 	private final Player player;
@@ -40,12 +42,14 @@ public class InventoryInterfaceBuilder {
 		this.autoUpdate = true;
 	}
 
-	public final InventoryInterfaceBuilder addItem(InventoryInterfaceItem item, int slot) {
+	@NotNull
+	public final InventoryInterfaceBuilder addItem(@Nullable InventoryInterfaceItem item, int slot) {
 		this.items[slot] = item;
 		return this;
 	}
 
-	public final InventoryInterfaceBuilder addItems(InventoryInterfaceItem... itemArray) {
+	@NotNull
+	public final InventoryInterfaceBuilder addItems(@NotNull InventoryInterfaceItem... itemArray) {
 		System.arraycopy(itemArray, 0, this.items, 0, itemArray.length);
 		return this;
 	}
@@ -64,6 +68,7 @@ public class InventoryInterfaceBuilder {
 		return InventoryInterfaceManager.register(this.holder.uuid, new InventoryInterface(inventory, this.items, this.player, this.autoUpdate));
 	}*/
 
+	@NotNull
 	public InventoryInterface build() {
 		final Inventory inventory = Bukkit.createInventory(this.holder, this.items.length, this.title);
 		this.holder.inventory = inventory;

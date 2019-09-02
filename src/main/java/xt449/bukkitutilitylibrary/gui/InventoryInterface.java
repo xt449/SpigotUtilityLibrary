@@ -12,14 +12,14 @@ public class InventoryInterface {
 	private final Player player;
 	private final boolean autoUpdate;
 
-	InventoryInterface(Inventory inventory, InventoryInterfaceItem[] items, @Nullable Player player, boolean autoUpdate) {
+	InventoryInterface(@NotNull Inventory inventory, @NotNull InventoryInterfaceItem[] items, @Nullable Player player, boolean autoUpdate) {
 		this.inventory = inventory;
 		this.items = items;
 		this.player = player;
 		this.autoUpdate = autoUpdate;
 	}
 
-	final void onClick(InventoryClickEvent event) {
+	final void onClick(@NotNull InventoryClickEvent event) {
 		InventoryInterfaceItem item = this.items[event.getSlot()];
 
 		if(item != null) {

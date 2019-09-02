@@ -10,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
@@ -18,11 +20,11 @@ public class InventoryInterfaceManager {
 	private static BiMap<UUID, InventoryInterface> inventoryInterfaces = HashBiMap.create(2);
 	private static boolean initialized = false;
 
-	public static void initialize(Plugin plugin) {
+	public static void initialize(@NotNull final Plugin plugin) {
 		if(!initialized) {
 			Bukkit.getPluginManager().registerEvents(new Listener() {
 				@EventHandler(priority = EventPriority.HIGHEST)
-				public final void onInventoryClick(InventoryClickEvent event) {
+				public final void onInventoryClick(final InventoryClickEvent event) {
 					if(event.getView().getTopInventory().getHolder() instanceof InventoryInterfaceHolder) {
 						event.setCancelled(true);
 						event.setResult(Event.Result.DENY);
@@ -34,7 +36,7 @@ public class InventoryInterfaceManager {
 				}
 
 				@EventHandler(priority = EventPriority.HIGHEST)
-				public final void onInventoryDrag(InventoryDragEvent event) {
+				public final void onInventoryDrag(final InventoryDragEvent event) {
 					if(event.getView().getTopInventory().getHolder() instanceof InventoryInterfaceHolder) {
 						event.setCancelled(true);
 						event.setResult(Event.Result.DENY);
@@ -46,7 +48,7 @@ public class InventoryInterfaceManager {
 		}
 	}
 
-	static void register(InventoryInterface inventoryInterface) {
+	static void register(@NotNull final InventoryInterface inventoryInterface) {
 		if(!initialized) {
 			throw new IllegalStateException("InventoryInterfaceManager has not been initialized by any plugin!");
 		} else {
@@ -58,7 +60,8 @@ public class InventoryInterfaceManager {
 		}
 	}
 
-	static InventoryInterface register(UUID uuid, InventoryInterface inventoryInterface) {
+	@NotNull
+	static InventoryInterface register(@NotNull final UUID uuid, @NotNull final InventoryInterface inventoryInterface) {
 		if(!initialized) {
 			throw new IllegalStateException("InventoryInterfaceManager has not been initialized by any plugin!");
 		} else {
@@ -67,11 +70,12 @@ public class InventoryInterfaceManager {
 		}
 	}
 
-	public static boolean unregister(InventoryInterface inventoryInterface) {
+	public static boolean unregister(@NotNull final InventoryInterface inventoryInterface) {
 		return inventoryInterfaces.inverse().remove(inventoryInterface) != null;
 	}
 
-	private static InventoryInterface getInventoryInterface(InventoryInterfaceHolder holder) {
+	@Nullable
+	private static InventoryInterface getInventoryInterface(@NotNull final InventoryInterfaceHolder holder) {
 		return inventoryInterfaces.get(holder.uuid);
 	}
 }
