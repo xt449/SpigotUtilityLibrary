@@ -1,56 +1,43 @@
 package xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-public class InventoryInterface {
-	final Inventory inventory;
-	private final InventoryInterfaceItem[] items;
-	private final Player player;
-	private final boolean autoUpdate;
+public interface InventoryInterface {
+	@NotNull InventoryInterfaceHolder getHolder();
 
-	InventoryInterface(@NotNull Inventory inventory, @NotNull InventoryInterfaceItem[] items, @Nullable Player player, boolean autoUpdate) {
-		this.inventory = inventory;
-		this.items = items;
-		this.player = player;
-		this.autoUpdate = autoUpdate;
+	default void display(@NotNull Player player) {
+		player.openInventory(getHolder().inventory);
 	}
+	void update();
 
-	final void onClick(@NotNull InventoryClickEvent event) {
-		InventoryInterfaceItem item = this.items[event.getSlot()];
+	/*void onClick(@NotNull InventoryClickEvent event);
 
-		if(item != null) {
-			item.triggerAction(event);
+	default ClickHandler clickHandler = new ClickHandler() {
+		@Override
+		public void onClick(@NotNull InventoryClickEvent event) {
+			event.setCancelled(true);
 		}
+	};*/
+
+	void onEventInOtherInventory(@NotNull Inventory inventory, @NotNull InventoryEvent event);
+
+	default void onClick(@NotNull InventoryClickEvent event) {
+		event.setCancelled(true);
 	}
 
-	public void displayTo(@NotNull Player player) {
-		if(this.autoUpdate) {
-			this.update();
-		}
-
-		player.openInventory(this.inventory);
+	default void onDrag(@NotNull InventoryDragEvent event) {
+		event.setCancelled(true);
 	}
 
-	public void display() {
-		if(this.player != null) {
-			if(this.autoUpdate) {
-				this.update();
-			}
+	/*@Deprecated
+	default void onCreative(@NotNull InventoryCreativeEvent event) {
+		event.setCancelled(true);
+	}*/
 
-			this.player.openInventory(this.inventory);
-		}
+	void onOpen(@NotNull InventoryOpenEvent event);
 
-	}
-
-	public void update() {
-		for(int slot = 0; slot < this.items.length; ++slot) {
-			if(this.items[slot] instanceof UpdatingInventoryInterfaceItem) {
-				this.inventory.setItem(slot, ((UpdatingInventoryInterfaceItem) this.items[slot]).triggerUpdate(this.player, this.inventory.getItem(slot)));
-			}
-		}
-	}
+	void onClose(@NotNull InventoryCloseEvent event);
 }

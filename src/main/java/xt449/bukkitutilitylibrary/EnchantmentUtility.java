@@ -11,7 +11,6 @@ public class EnchantmentUtility {
 		try {
 			if(!Enchantment.isAcceptingRegistrations()) {
 				final Field field = Enchantment.class.getDeclaredField("acceptingNew");
-
 				field.setAccessible(true);
 				field.set(null, true);
 			}

@@ -5,6 +5,10 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @deprecated Updating soon
+ */
+@Deprecated
 public class UpdatingInventoryInterfaceItem extends InventoryInterfaceItem {
 	private final Updater updater;
 

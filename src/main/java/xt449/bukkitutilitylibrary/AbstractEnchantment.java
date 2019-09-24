@@ -5,6 +5,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Unused
+ */
 @Deprecated
 public abstract class AbstractEnchantment extends Enchantment {
 
@@ -18,10 +21,5 @@ public abstract class AbstractEnchantment extends Enchantment {
 	public AbstractEnchantment(@NotNull Plugin plugin, @NotNull String id, @NotNull String name) {
 		super(new NamespacedKey(plugin, id));
 		this.name = name;
-	}
-
-	@Override
-	public @NotNull String getName() {
-		return name;
 	}
 }

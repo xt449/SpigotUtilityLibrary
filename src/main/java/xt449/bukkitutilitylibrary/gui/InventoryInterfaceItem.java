@@ -8,7 +8,10 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings("WeakerAccess")
+/**
+ * @deprecated Updating soon
+ */
+@Deprecated
 public class InventoryInterfaceItem {
 
 	final ItemStack itemStack;

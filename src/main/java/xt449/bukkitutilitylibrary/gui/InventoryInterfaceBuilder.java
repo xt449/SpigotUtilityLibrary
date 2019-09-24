@@ -1,84 +1,108 @@
 package xt449.bukkitutilitylibrary.gui;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class InventoryInterfaceBuilder {
 
-	private final InventoryInterfaceItem[] items;
-	private final String title;
-	private final Player player;
-	private final boolean autoUpdate;
-	private final InventoryInterfaceHolder holder = new InventoryInterfaceHolder();
+	private ClickHandler clickHandler = event -> {};
+	private DragHandler dragHandler = event -> {};
+	/*private CreativeHandler creativeHandler = event -> {};*/
+	private OpenHandler openHandler = event -> {};
+	private CloseHandler closeHandler = event -> {};
 
-	public InventoryInterfaceBuilder(int rows, @NotNull String title, Player player, boolean autoUpdate) {
-		this.items = new InventoryInterfaceItem[rows * 9];
-		this.title = title;
-		this.player = player;
-		this.autoUpdate = autoUpdate;
-	}
+	private final InventoryInterface inventoryInterface;
 
 	public InventoryInterfaceBuilder(int rows, @NotNull String title, boolean autoUpdate) {
-		this.items = new InventoryInterfaceItem[rows * 9];
-		this.title = title;
-		this.player = null;
-		this.autoUpdate = autoUpdate;
-	}
-
-	public InventoryInterfaceBuilder(int rows, @NotNull String title, Player player) {
-		this.items = new InventoryInterfaceItem[rows * 9];
-		this.title = title;
-		this.player = player;
-		this.autoUpdate = true;
-	}
-
-	public InventoryInterfaceBuilder(int rows, @NotNull String title) {
-		this.items = new InventoryInterfaceItem[rows * 9];
-		this.title = title;
-		this.player = null;
-		this.autoUpdate = true;
-	}
-
-	@NotNull
-	public final InventoryInterfaceBuilder addItem(@Nullable InventoryInterfaceItem item, int slot) {
-		this.items[slot] = item;
-		return this;
-	}
-
-	@NotNull
-	public final InventoryInterfaceBuilder addItems(@NotNull InventoryInterfaceItem... itemArray) {
-		System.arraycopy(itemArray, 0, this.items, 0, itemArray.length);
-		return this;
-	}
-
-	/*@Deprecated
-	public InventoryInterface build() {
-		Inventory inventory = Bukkit.createInventory(this.holder, this.items.length, this.title);
-
-		for(int i = 0; i < this.items.length; ++i) {
-			if(this.items[i] != null) {
-				inventory.setItem(i, this.items[i].itemStack);
+		inventoryInterface = new AbstractInventoryInterface(rows, title, autoUpdate) {
+			@Override
+			public void onClick(@NotNull InventoryClickEvent event) {
+				clickHandler.onClick(event);
 			}
-		}
+			@Override
+			public void onDrag(@NotNull InventoryDragEvent event) {
+				dragHandler.onDrag(event);
+			}
+			/*@Override
+			public void onCreative(@NotNull InventoryCreativeEvent event) {
+				creativeHandler.onCreative(event);
+			}*/
+			@Override
+			public void onOpen(@NotNull InventoryOpenEvent event) {
+				openHandler.onOpen(event);
+			}
+			@Override
+			public void onClose(@NotNull InventoryCloseEvent event) {
+				closeHandler.onClose(event);
+			}
+		};
+	}
 
-		this.holder.inventory = inventory;
-		return InventoryInterfaceManager.register(this.holder.uuid, new InventoryInterface(inventory, this.items, this.player, this.autoUpdate));
+	public InventoryInterfaceBuilder(@NotNull Inventory inventory, boolean autoUpdate) {
+		inventoryInterface = new AbstractInventoryInterface(inventory, autoUpdate) {
+			@Override
+			public void onClick(@NotNull InventoryClickEvent event) {
+				clickHandler.onClick(event);
+			}
+			@Override
+			public void onDrag(@NotNull InventoryDragEvent event) {
+				dragHandler.onDrag(event);
+			}
+			@Override
+			public void onOpen(@NotNull InventoryOpenEvent event) {
+				openHandler.onOpen(event);
+			}
+			@Override
+			public void onClose(@NotNull InventoryCloseEvent event) {
+				closeHandler.onClose(event);
+			}
+		};
+	}
+
+	public InventoryInterfaceBuilder setClickHandler(@NotNull ClickHandler clickHandler) {
+		this.clickHandler = clickHandler;
+		return this;
+	}
+
+	public InventoryInterfaceBuilder setDragHandler(@NotNull DragHandler dragHandler) {
+		this.dragHandler = dragHandler;
+		return this;
+	}
+
+	/*public InventoryInterfaceBuilder setCreativeHandler(@NotNull CreativeHandler creativeHandler) {
+		this.creativeHandler = creativeHandler;
+		return this;
 	}*/
 
-	@NotNull
-	public InventoryInterface build() {
-		final Inventory inventory = Bukkit.createInventory(this.holder, this.items.length, this.title);
-		this.holder.inventory = inventory;
+	public InventoryInterfaceBuilder setOpenHandler(@NotNull OpenHandler openHandler) {
+		this.openHandler = openHandler;
+		return this;
+	}
 
-		for(int i = 0; i < this.items.length; ++i) {
-			if(this.items[i] != null) {
-				inventory.setItem(i, this.items[i].itemStack);
-			}
-		}
+	public InventoryInterfaceBuilder setCloseHandler(@NotNull CloseHandler closeHandler) {
+		this.closeHandler = closeHandler;
+		return this;
+	}
 
-		return new InventoryInterface(inventory, this.items, this.player, this.autoUpdate);
+	public InventoryInterfaceHolder build() {
+		return inventoryInterface.getHolder();
+	}
+
+	public static interface ClickHandler {
+		void onClick(@NotNull InventoryClickEvent event);
+	}
+	public static interface DragHandler {
+		void onDrag(@NotNull InventoryDragEvent event);
+	}
+	/*@Deprecated
+	public static interface CreativeHandler {
+		void onCreative(@NotNull InventoryCreativeEvent event);
+	}*/
+	public static interface OpenHandler {
+		void onOpen(@NotNull InventoryOpenEvent event);
+	}
+	public static interface CloseHandler {
+		void onClose(@NotNull InventoryCloseEvent event);
 	}
 }
