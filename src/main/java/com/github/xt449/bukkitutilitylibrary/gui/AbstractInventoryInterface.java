@@ -1,11 +1,16 @@
-package xt449.bukkitutilitylibrary.gui;
+package com.github.xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author xt449
+ */
 public abstract class AbstractInventoryInterface implements InventoryInterface {
 
 	private final InventoryInterfaceHolder holder = new InventoryInterfaceHolder();

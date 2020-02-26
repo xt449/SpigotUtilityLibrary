@@ -1,9 +1,12 @@
-package xt449.bukkitutilitylibrary.gui;
+package com.github.xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
@@ -41,11 +44,11 @@ public class InventoryInterfaceListener implements Listener {
 			final Inventory clickedInventory = event.getInventory();
 
 			//if(clickedInventory != null) {
-				if(holder.getInventory() == clickedInventory) {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onDrag(event);
-				} else {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-				}
+			if(holder.getInventory() == clickedInventory) {
+				((InventoryInterfaceHolder) holder).inventoryInterface.onDrag(event);
+			} else {
+				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+			}
 			//}
 		}
 	}
@@ -73,11 +76,11 @@ public class InventoryInterfaceListener implements Listener {
 			final Inventory clickedInventory = event.getInventory();
 
 			//if(clickedInventory != null) {
-				if(holder.getInventory() == clickedInventory) {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onOpen(event);
-				} else {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-				}
+			if(holder.getInventory() == clickedInventory) {
+				((InventoryInterfaceHolder) holder).inventoryInterface.onOpen(event);
+			} else {
+				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+			}
 			//}
 		}
 	}
@@ -89,11 +92,11 @@ public class InventoryInterfaceListener implements Listener {
 			final Inventory clickedInventory = event.getInventory();
 
 			//if(clickedInventory != null) {
-				if(holder.getInventory() == clickedInventory) {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onClose(event);
-				} else {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-				}
+			if(holder.getInventory() == clickedInventory) {
+				((InventoryInterfaceHolder) holder).inventoryInterface.onClose(event);
+			} else {
+				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+			}
 			//}
 		}
 	}

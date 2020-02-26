@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary;
+package com.github.xt449.bukkitutilitylibrary;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -7,6 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author xt449
+ */
 public abstract class AbstractConfiguration {
 
 	protected final String filePath;

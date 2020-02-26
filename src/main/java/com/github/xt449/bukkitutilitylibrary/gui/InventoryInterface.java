@@ -1,16 +1,20 @@
-package xt449.bukkitutilitylibrary.gui;
+package com.github.xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author xt449
+ */
 public interface InventoryInterface {
 	@NotNull InventoryInterfaceHolder getHolder();
 
 	default void display(@NotNull Player player) {
 		player.openInventory(getHolder().inventory);
 	}
+
 	void update();
 
 	/*void onClick(@NotNull InventoryClickEvent event);

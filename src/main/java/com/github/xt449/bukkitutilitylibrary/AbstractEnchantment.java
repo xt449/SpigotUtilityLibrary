@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary;
+package com.github.xt449.bukkitutilitylibrary;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -6,7 +6,8 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Unused
+ * @author xt449
+ * @deprecated Unused
  */
 @Deprecated
 public abstract class AbstractEnchantment extends Enchantment {

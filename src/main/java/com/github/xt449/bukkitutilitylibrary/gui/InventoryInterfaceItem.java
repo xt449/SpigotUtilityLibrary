@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary.gui;
+package com.github.xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * @author xt449
  * @deprecated Updating soon
  */
 @Deprecated

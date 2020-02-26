@@ -1,10 +1,13 @@
-package xt449.bukkitutilitylibrary;
+package com.github.xt449.bukkitutilitylibrary;
 
 import org.bukkit.enchantments.Enchantment;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 
+/**
+ * @author xt449
+ */
 public class EnchantmentUtility {
 
 	private static void prepareRegistration() {

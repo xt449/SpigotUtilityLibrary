@@ -1,12 +1,15 @@
-package xt449.bukkitutilitylibrary.example;
+package com.github.xt449.bukkitutilitylibrary.example;
 
+import com.github.xt449.bukkitutilitylibrary.AbstractCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import xt449.bukkitutilitylibrary.AbstractCommand;
 
+/**
+ * @author xt449
+ */
 public final class ExampleCommand extends AbstractCommand {
 
 	private final Enchantment enchantment;

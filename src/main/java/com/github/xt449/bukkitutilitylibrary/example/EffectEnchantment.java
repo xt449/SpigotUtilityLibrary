@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary.example;
+package com.github.xt449.bukkitutilitylibrary.example;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -7,6 +7,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author xt449
+ */
 public final class EffectEnchantment extends Enchantment {
 
 	EffectEnchantment(@NotNull final Plugin plugin) {

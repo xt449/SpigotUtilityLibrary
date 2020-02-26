@@ -1,9 +1,12 @@
-package xt449.bukkitutilitylibrary.gui;
+package com.github.xt449.bukkitutilitylibrary.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author xt449
+ */
 public class InventoryInterfaceManager {
 
 	private static boolean initialized = false;

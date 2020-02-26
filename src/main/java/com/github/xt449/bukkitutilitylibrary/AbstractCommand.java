@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary;
+package com.github.xt449.bukkitutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -13,6 +13,9 @@ import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author xt449
+ */
 public abstract class AbstractCommand extends Command implements PluginIdentifiableCommand {
 
 	//private static final String MISSING_PERMISSION = ChatColor.RED + "You do not have permission to perform this command!";
@@ -36,13 +39,13 @@ public abstract class AbstractCommand extends Command implements PluginIdentifia
 	@Override
 	public boolean execute(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
 		//if(plugin.isEnabled()) {
-			//if(hasPermission(sender)) {
-				if(sender instanceof Player) {
-					return onPlayerExecute((Player) sender, alias, args);
-				} else {
-					return onConsoleExecute(sender, alias, args);
-				}
-			//}
+		//if(hasPermission(sender)) {
+		if(sender instanceof Player) {
+			return onPlayerExecute((Player) sender, alias, args);
+		} else {
+			return onConsoleExecute(sender, alias, args);
+		}
+		//}
 		//}
 
 		//return false;
@@ -52,13 +55,13 @@ public abstract class AbstractCommand extends Command implements PluginIdentifia
 	@Override
 	public List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
 		//if(plugin.isEnabled()) {
-			//if(hasPermission(sender)) {
-				if(sender instanceof Player) {
-					return onPlayerTab((Player) sender, alias, args);
-				} else {
-					return onConsoleTab(sender, alias, args);
-				}
-			//}
+		//if(hasPermission(sender)) {
+		if(sender instanceof Player) {
+			return onPlayerTab((Player) sender, alias, args);
+		} else {
+			return onConsoleTab(sender, alias, args);
+		}
+		//}
 		//}
 
 		//return Collections.emptyList();

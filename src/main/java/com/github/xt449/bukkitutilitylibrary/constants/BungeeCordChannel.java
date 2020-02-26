@@ -1,5 +1,8 @@
-package xt449.bukkitutilitylibrary.constants;
+package com.github.xt449.bukkitutilitylibrary.constants;
 
+/**
+ * @author xt449
+ */
 public final class BungeeCordChannel {
 
 	/**

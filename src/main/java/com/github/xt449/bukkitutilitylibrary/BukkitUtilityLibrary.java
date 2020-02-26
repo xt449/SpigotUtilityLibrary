@@ -1,6 +1,7 @@
-package xt449.bukkitutilitylibrary;
+package com.github.xt449.bukkitutilitylibrary;
 
 /**
+ * @author xt449
  * @deprecated Unused
  */
 @Deprecated

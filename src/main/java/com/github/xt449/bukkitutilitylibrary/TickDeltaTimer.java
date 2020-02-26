@@ -1,4 +1,4 @@
-package xt449.bukkitutilitylibrary;
+package com.github.xt449.bukkitutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -7,6 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
+/**
+ * @author xt449
+ */
 public final class TickDeltaTimer {
 
 	private static long lastTimeMillis = 0;
