@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * @author xt449
- * @deprecated Updating soon
+ * @deprecated Update not planned
  */
 @Deprecated
 public class UpdatingInventoryInterfaceItem extends InventoryInterfaceItem {

@@ -6,11 +6,11 @@
 
     <groupId>com.github.xt449</groupId>
     <artifactId>bukkitutilitylibrary</artifactId>
-    <version>${minecraft.version}-4.1.5</version>
+    <version>${minecraft.version}-4.1.6</version>
     <name>BukkitUtilityLibrary</name>
 
     <properties>
-        <minecraft.version>1.14.4</minecraft.version>
+        <minecraft.version>1.15.2</minecraft.version>
     </properties>
 
     <repositories>
