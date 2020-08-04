@@ -6,11 +6,11 @@
 
     <groupId>com.github.xt449</groupId>
     <artifactId>bukkitutilitylibrary</artifactId>
-    <version>${minecraft.version}-4.1.6</version>
+    <version>${minecraft.version}-4.1.7</version>
     <name>BukkitUtilityLibrary</name>
 
     <properties>
-        <minecraft.version>1.15.2</minecraft.version>
+        <minecraft.version>1.16.1</minecraft.version>
     </properties>
 
     <repositories>
@@ -30,7 +30,7 @@
 
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
+            <artifactId>spigot-api</artifactId>
             <version>${minecraft.version}-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -74,10 +74,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <excludes>
-                        <exclude>xt449/bukkitutilitylibrary/example/</exclude>
+                        <exclude>com/github/xt449/bukkitutilitylibrary/example/</exclude>
                     </excludes>
-                    <source>8</source>
-                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
