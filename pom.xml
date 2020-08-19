@@ -43,14 +43,6 @@
             <optional>true</optional>
         </dependency>-->
 
-        <!--<dependency>
-            <groupId>net</groupId>
-            <artifactId>minecraft</artifactId>
-            <version>1.12.2</version>
-            <scope>system</scope>
-            <systemPath>C:/Projects/Java/Forge/MDK/Minecraft Sources.zip</systemPath>
-        </dependency>-->
-
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -75,6 +67,7 @@
                 <configuration>
                     <excludes>
                         <exclude>com/github/xt449/bukkitutilitylibrary/example/</exclude>
+                        <exclude>plugin.yml</exclude>
                     </excludes>
                 </configuration>
             </plugin>
