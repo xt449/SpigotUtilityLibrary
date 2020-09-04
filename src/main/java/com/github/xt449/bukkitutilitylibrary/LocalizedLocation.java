@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author xt449
  */
+@Deprecated
 public class LocalizedLocation {
 
 	private double x;
