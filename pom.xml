@@ -10,7 +10,7 @@
     <name>BukkitUtilityLibrary</name>
 
     <properties>
-        <minecraft.version>1.16.2</minecraft.version>
+        <minecraft.version>1.16.3</minecraft.version>
     </properties>
 
     <repositories>
