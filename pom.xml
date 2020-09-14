@@ -6,7 +6,7 @@
 
     <groupId>com.github.xt449</groupId>
     <artifactId>bukkitutilitylibrary</artifactId>
-    <version>${minecraft.version}-4.2.0</version>
+    <version>${minecraft.version}-4.2.1</version>
     <name>BukkitUtilityLibrary</name>
 
     <properties>
@@ -18,15 +18,20 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/xt449/${project.artifactId}/</url>
+        </repository>
     </repositories>
 
     <dependencies>
-        <!--<dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
             <version>${minecraft.version}-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -34,14 +39,6 @@
             <version>${minecraft.version}-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>${minecraft.version}-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>-->
 
         <dependency>
             <groupId>org.jetbrains</groupId>
@@ -50,6 +47,13 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/xt449/${project.artifactId}/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <resources>
@@ -67,7 +71,6 @@
                 <configuration>
                     <excludes>
                         <exclude>com/github/xt449/bukkitutilitylibrary/example/</exclude>
-                        <exclude>plugin.yml</exclude>
                     </excludes>
                 </configuration>
             </plugin>
