@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * @author xt449
+ *
+ * @deprecated not needed as Bukkit already allows for null world locations
  */
 @Deprecated
 public class LocalizedLocation {

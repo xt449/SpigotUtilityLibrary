@@ -6,7 +6,7 @@
 
     <groupId>com.github.xt449</groupId>
     <artifactId>bukkitutilitylibrary</artifactId>
-    <version>${minecraft.version}-4.2.1</version>
+    <version>${minecraft.version}-4.2.2</version>
     <name>BukkitUtilityLibrary</name>
 
     <properties>
@@ -56,13 +56,6 @@
     </distributionManagement>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -20,6 +20,7 @@
 
 package com.github.xt449.bukkitutilitylibrary;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -30,47 +31,70 @@ import java.util.List;
 
 /**
  * @author xt449
+ *
+ * Allows for single line ItemStack construction and initialization
+ *
+ * @deprecated Work in progress
  */
-public class ItemStackBuilder extends ItemStack {
+@Deprecated
+public class ItemStackBuilder {
 
-	public ItemStackBuilder(Material material) {
-		super(material);
+	// Instance
+
+	public final Material material;
+	public final int amount;
+	public final ItemMeta meta;
+
+	public ItemStackBuilder(Material material, int amount, ItemMeta meta) {
+		this.material = material;
+		this.amount = amount;
+		this.meta = meta;
+		if(!Bukkit.getItemFactory().isApplicable(meta, material)) {
+			throw new IllegalArgumentException("");
+		}
 	}
 
 	public ItemStackBuilder(Material material, int amount) {
-		super(material, amount);
+		this.material = material;
+		this.amount = amount;
+		this.meta = Bukkit.getItemFactory().getItemMeta(material);
+	}
+
+	public ItemStackBuilder(Material material) {
+		this.material = material;
+		this.amount = 1;
+		this.meta = Bukkit.getItemFactory().getItemMeta(material);
 	}
 
 	public ItemStackBuilder unbreakable() {
-		final ItemMeta meta = getItemMeta();
 		meta.setUnbreakable(true);
-		setItemMeta(meta);
 		return this;
 	}
 
 	public ItemStackBuilder enchant(Enchantment enchantment, int level) {
-		addUnsafeEnchantment(enchantment, level);
+		meta.addEnchant(enchantment, level, true);
 		return this;
 	}
 
 	public ItemStackBuilder name(String name) {
-		final ItemMeta meta = getItemMeta();
 		meta.setDisplayName(name);
-		setItemMeta(meta);
 		return this;
 	}
 
 	public ItemStackBuilder lore(List<String> lore) {
-		final ItemMeta meta = getItemMeta();
 		meta.setLore(lore);
-		setItemMeta(meta);
 		return this;
 	}
 
 	public ItemStackBuilder lore(String... lore) {
-		final ItemMeta meta = getItemMeta();
 		meta.setLore(Arrays.asList(lore));
-		setItemMeta(meta);
 		return this;
+	}
+
+	public ItemStack build() {
+		final ItemStack itemStack = new ItemStack(material, amount);
+		itemStack.setItemMeta(meta);
+
+		return itemStack;
 	}
 }
