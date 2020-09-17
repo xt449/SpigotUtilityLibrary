@@ -27,7 +27,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 /**
@@ -45,15 +44,15 @@ public class InventoryInterfaceListener implements Listener {
 	public void onInventoryClick(InventoryClickEvent event) {
 		final InventoryHolder holder = event.getView().getTopInventory().getHolder();
 		if(holder instanceof InventoryInterfaceHolder) {
-			final Inventory clickedInventory = event.getClickedInventory();
+//			final Inventory clickedInventory = event.getClickedInventory();
 
-			if(clickedInventory != null) {
-				if(holder.getInventory() == clickedInventory) {
+//			if(clickedInventory != null) {
+//				if(holder.getInventory() == clickedInventory) {
 					((InventoryInterfaceHolder) holder).inventoryInterface.onClick(event);
-				} else {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-				}
-			}
+//				} else {
+//					((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+//				}
+//			}
 		}
 	}
 
@@ -61,15 +60,13 @@ public class InventoryInterfaceListener implements Listener {
 	public void onInventoryDrag(InventoryDragEvent event) {
 		final InventoryHolder holder = event.getView().getTopInventory().getHolder();
 		if(holder instanceof InventoryInterfaceHolder) {
-			final Inventory clickedInventory = event.getInventory();
+//			final Inventory clickedInventory = event.getInventory();
 
-			//if(clickedInventory != null) {
-			if(holder.getInventory() == clickedInventory) {
+//			if(holder.getInventory() == clickedInventory) {
 				((InventoryInterfaceHolder) holder).inventoryInterface.onDrag(event);
-			} else {
-				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-			}
-			//}
+//			} else {
+//				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+//			}
 		}
 	}
 
@@ -93,15 +90,13 @@ public class InventoryInterfaceListener implements Listener {
 	public void onInventoryOpen(InventoryOpenEvent event) {
 		final InventoryHolder holder = event.getView().getTopInventory().getHolder();
 		if(holder instanceof InventoryInterfaceHolder) {
-			final Inventory clickedInventory = event.getInventory();
+//			final Inventory clickedInventory = event.getInventory();
 
-			//if(clickedInventory != null) {
-			if(holder.getInventory() == clickedInventory) {
+//			if(holder.getInventory() == clickedInventory) {
 				((InventoryInterfaceHolder) holder).inventoryInterface.onOpen(event);
-			} else {
-				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-			}
-			//}
+//			} else {
+//				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+//			}
 		}
 	}
 
@@ -109,15 +104,13 @@ public class InventoryInterfaceListener implements Listener {
 	public void onInventoryClose(InventoryCloseEvent event) {
 		final InventoryHolder holder = event.getView().getTopInventory().getHolder();
 		if(holder instanceof InventoryInterfaceHolder) {
-			final Inventory clickedInventory = event.getInventory();
+//			final Inventory clickedInventory = event.getInventory();
 
-			//if(clickedInventory != null) {
-			if(holder.getInventory() == clickedInventory) {
+//			if(holder.getInventory() == clickedInventory) {
 				((InventoryInterfaceHolder) holder).inventoryInterface.onClose(event);
-			} else {
-				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
-			}
-			//}
+//			} else {
+//				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
+//			}
 		}
 	}
 }
