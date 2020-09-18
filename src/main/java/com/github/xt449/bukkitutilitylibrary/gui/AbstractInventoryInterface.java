@@ -25,6 +25,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,26 +36,18 @@ public abstract class AbstractInventoryInterface implements InventoryInterface {
 
 	private final InventoryInterfaceHolder holder = new InventoryInterfaceHolder();
 
-	final int size;
-	//final Inventory inventory;
 	final boolean autoUpdate;
 
-	AbstractInventoryInterface(@NotNull Inventory inventory, boolean autoUpdate) {
-		size = inventory.getSize();
-
-		holder.inventory = inventory;
+	AbstractInventoryInterface(@NotNull InventoryType inventoryType, @NotNull String title, boolean autoUpdate) {
+		holder.inventory = Bukkit.createInventory(holder, inventoryType, title);
 		holder.inventoryInterface = this;
-		//this.inventory = inventory;
 
 		this.autoUpdate = autoUpdate;
 	}
 
 	AbstractInventoryInterface(int rows, @NotNull String title, boolean autoUpdate) {
-		size = rows * 9;
-
-		holder.inventory = Bukkit.createInventory(holder, size, title);
+		holder.inventory = Bukkit.createInventory(holder, rows * 9, title);
 		holder.inventoryInterface = this;
-		//this.inventory = inventory;
 
 		this.autoUpdate = autoUpdate;
 	}

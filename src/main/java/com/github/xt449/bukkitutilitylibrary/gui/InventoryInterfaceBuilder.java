@@ -20,11 +20,7 @@
 
 package com.github.xt449.bukkitutilitylibrary.gui;
 
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.event.inventory.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -72,8 +68,8 @@ public class InventoryInterfaceBuilder {
 		};
 	}
 
-	public InventoryInterfaceBuilder(@NotNull Inventory inventory, boolean autoUpdate) {
-		inventoryInterface = new AbstractInventoryInterface(inventory, autoUpdate) {
+	public InventoryInterfaceBuilder(@NotNull InventoryType inventoryType, @NotNull String title, boolean autoUpdate) {
+		inventoryInterface = new AbstractInventoryInterface(inventoryType, title, autoUpdate) {
 			@Override
 			public void onClick(@NotNull InventoryClickEvent event) {
 				clickHandler.onClick(event);
