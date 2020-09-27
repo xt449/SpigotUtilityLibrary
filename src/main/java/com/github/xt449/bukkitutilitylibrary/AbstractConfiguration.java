@@ -26,6 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @author xt449
@@ -40,16 +41,29 @@ public abstract class AbstractConfiguration {
 
 	protected String header = null;
 
-	///**
-	// * @param plugin - may be not enabled plugin
-	// */
 	protected AbstractConfiguration(@NotNull final Plugin plugin, @NotNull final String filePath) {
 		this.plugin = plugin;
 		this.filePath = filePath;
 	}
 
+	protected void writeDefaults() {
+		setDefaultsFromResource();
+	}
+
+	protected void readValues() {
+
+	}
+
+	/**
+	 * @deprecated Use {@link AbstractConfiguration#writeDefaults()}
+	 */
+	@Deprecated
 	protected abstract void setDefaults();
 
+	/**
+	 * @deprecated Use {@link AbstractConfiguration#readValues()}
+	 */
+	@Deprecated
 	protected abstract void getValues();
 
 	public final void initialize() {
@@ -84,15 +98,21 @@ public abstract class AbstractConfiguration {
 		config.options().header(header);
 
 		setDefaults();
+		writeDefaults();
 
 		getValues();
+		readValues();
 
 		// This configuration save is only important for the first plugin
 		// load or any paths removed by the user or added in a new version
 		save();
 	}
 
-	protected final void save() {
+	protected final void setDefaultsFromResource() {
+		config.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(filePath))));
+	}
+
+	protected void save() {
 		try {
 			config.save(file);
 		} catch(IOException exc) {
