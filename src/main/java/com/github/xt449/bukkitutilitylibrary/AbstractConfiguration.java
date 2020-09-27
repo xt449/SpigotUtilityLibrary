@@ -46,7 +46,11 @@ public abstract class AbstractConfiguration {
 	}
 
 	protected void writeDefaults() {
-		setDefaultsFromResource();
+		try {
+			config.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(filePath))));
+		} catch(Exception exc) {
+			plugin.getLogger().warning("Unable to load defaults for configuration file '" + filePath + "' from '" + plugin.getName() + "'!");
+		}
 	}
 
 	protected void readValues() {
@@ -105,14 +109,6 @@ public abstract class AbstractConfiguration {
 		// This configuration save is only important for the first plugin
 		// load or any paths removed by the user or added in a new version
 		save();
-	}
-
-	protected final void setDefaultsFromResource() {
-		try {
-			config.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(filePath))));
-		} catch(Exception exc) {
-			plugin.getLogger().warning("Unable to load defaults for configuration file '" + filePath + "' from '" + plugin.getName() + "'!");
-		}
 	}
 
 	protected void save() {
