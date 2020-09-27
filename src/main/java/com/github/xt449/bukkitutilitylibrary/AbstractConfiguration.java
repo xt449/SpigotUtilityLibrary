@@ -25,7 +25,6 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -77,7 +76,7 @@ public abstract class AbstractConfiguration {
 					throw new Exception();
 				}
 			} catch(Exception exc) {
-				plugin.getLogger().warning("Unable to create path to " + filePath + " configuration!");
+				plugin.getLogger().warning("Unable to create path to configuration file '" + filePath + "'!");
 			}
 		}
 
@@ -88,7 +87,7 @@ public abstract class AbstractConfiguration {
 					throw new Exception();
 				}
 			} catch(Exception exc) {
-				plugin.getLogger().warning("Unable to create file " + filePath + " configuration!");
+				plugin.getLogger().warning("Unable to create configuration file '" + filePath + "'!");
 			}
 		}
 
@@ -109,14 +108,18 @@ public abstract class AbstractConfiguration {
 	}
 
 	protected final void setDefaultsFromResource() {
-		config.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(filePath))));
+		try {
+			config.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(filePath))));
+		} catch(Exception exc) {
+			plugin.getLogger().warning("Unable to load defaults for configuration file '" + filePath + "' from '" + plugin.getName() + "'!");
+		}
 	}
 
 	protected void save() {
 		try {
 			config.save(file);
-		} catch(IOException exc) {
-			plugin.getLogger().warning("Unable to save file " + filePath + " configuration!");
+		} catch(Exception exc) {
+			plugin.getLogger().warning("Unable to save configuration file '" + filePath + "'!");
 		}
 	}
 }
