@@ -54,19 +54,4 @@
             <url>https://maven.pkg.github.com/xt449/${project.artifactId}/</url>
         </repository>
     </distributionManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <excludes>
-                        <exclude>com/github/xt449/bukkitutilitylibrary/example/</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
