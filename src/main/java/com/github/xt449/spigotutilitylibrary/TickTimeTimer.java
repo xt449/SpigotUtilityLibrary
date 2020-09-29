@@ -1,24 +1,24 @@
 /*
  * Copyright (c) 2020 xt449/BinaryBanana
  *
- * This file is part of BukkitUtilityLibrary.
+ * This file is part of SpigotUtilityLibrary.
  *
- * BukkitUtilityLibrary is free software: you can redistribute it and/or modify
+ * SpigotUtilityLibrary is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * BukkitUtilityLibrary is distributed in the hope that it will be useful,
+ * SpigotUtilityLibrary is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with BukkitUtilityLibrary.  If not, see <https://www.gnu.org/licenses/>.
+ * along with SpigotUtilityLibrary.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
-package com.github.xt449.bukkitutilitylibrary;
+package com.github.xt449.spigotutilitylibrary;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -28,12 +28,12 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author xt449
  *
- * Calculates TPS from the number of ticks between seconds
+ * Calculates TPS from the length of time between ticks
  */
-public final class TickDeltaTimer {
+public abstract class TickTimeTimer {
 
 	private static long lastTimeMillis = 0;
-	private static int tickCounter = 0;
+	private static long currentTimeMillis = 0;
 
 	private static float smartTPS = 20;
 
@@ -41,14 +41,11 @@ public final class TickDeltaTimer {
 		lastTimeMillis = System.currentTimeMillis();
 
 		return Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-			final long difference = System.currentTimeMillis() - lastTimeMillis;
-			if(difference >= 1000) { // one second
-				smartTPS = (smartTPS + tickCounter) / 2;
+			lastTimeMillis = currentTimeMillis;
+			currentTimeMillis = System.currentTimeMillis();
 
-				tickCounter = 0; // reset the counter
-				lastTimeMillis += difference; // add one second
-			}
-			tickCounter++;
+			final float temp = 1000F / (currentTimeMillis - lastTimeMillis); // one second
+			smartTPS = (smartTPS + temp) / 2;
 		}, 0, 1);
 	}
 
