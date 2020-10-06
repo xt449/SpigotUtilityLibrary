@@ -15,19 +15,30 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with SpigotUtilityLibrary.  If not, see <https://www.gnu.org/licenses/>.
- *
  */
 
-package com.github.xt449.spigotutilitylibrary.world;
+package com.github.xt449.spigotutilitylibrary;
 
-import org.bukkit.World;
+import org.bukkit.Bukkit;
 
-/**
- * @author xt449
- */
-public class ManagedWorld extends AbstractWorld {
+public abstract class NMSHelper {
 
-	ManagedWorld(String name, World world) {
-		super(name, world);
+	private static String versionString;
+
+	static {
+		versionString = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+		Bukkit.getLogger().info("NMS version is " + versionString);
+	}
+
+	public static String getVersionString() {
+		if(versionString == null) {
+			versionString = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+			Bukkit.getLogger().info("NMS version is " + versionString);
+		}
+		return versionString;
+	}
+
+	public static Class<?> getNMSClass(String className) throws ClassNotFoundException {
+		return Class.forName("net.minecraft.server." + getVersionString() + '.' + className);
 	}
 }
