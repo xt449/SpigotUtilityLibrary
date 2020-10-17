@@ -56,18 +56,6 @@ public abstract class AbstractConfiguration {
 
 	}
 
-	/**
-	 * @deprecated Use {@link AbstractConfiguration#writeDefaults()}
-	 */
-	@Deprecated
-	protected abstract void setDefaults();
-
-	/**
-	 * @deprecated Use {@link AbstractConfiguration#readValues()}
-	 */
-	@Deprecated
-	protected abstract void getValues();
-
 	public final void initialize() {
 		file = new File(plugin.getDataFolder(), filePath);
 		config = YamlConfiguration.loadConfiguration(file);
@@ -99,10 +87,10 @@ public abstract class AbstractConfiguration {
 		config.options().copyHeader(false);
 		config.options().header(header);
 
-		setDefaults();
+		// write
 		writeDefaults();
 
-		getValues();
+		// read
 		readValues();
 
 		// This configuration save is only important for the first plugin
