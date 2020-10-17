@@ -6,7 +6,7 @@
 
     <groupId>com.github.xt449</groupId>
     <artifactId>spigotutilitylibrary</artifactId>
-    <version>${minecraft.version}-4.3.0</version>
+    <version>${minecraft.version}-4.3.1</version>
     <name>SpigotUtilityLibrary</name>
 
     <properties>
