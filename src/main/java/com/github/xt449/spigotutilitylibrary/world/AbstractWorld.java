@@ -20,11 +20,13 @@
 package com.github.xt449.spigotutilitylibrary.world;
 
 import org.bukkit.*;
-import org.bukkit.craftbukkit.libs.org.apache.commons.io.FileUtils;
 import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -65,7 +67,7 @@ public abstract class AbstractWorld {
 		return world;
 	}
 
-	private Map<UUID, Location> lastLocations = new HashMap<>();
+	private final Map<UUID, Location> lastLocations = new HashMap<>();
 
 	public void join(Player player) {
 		join(player, world.getSpawnLocation());
@@ -111,7 +113,8 @@ public abstract class AbstractWorld {
 				}
 				// Delete world folder
 				try {
-					FileUtils.deleteDirectory(new File(Bukkit.getWorldContainer(), name));
+					// TODO
+					Files.walk(new File(Bukkit.getWorldContainer(), name).toPath()).sorted(Comparator.reverseOrder()).map(Path::toFile).forEach(File::delete);
 					Bukkit.getLogger().finest("Successfully unloaded (" + getClass().getSimpleName() + ") " + name);
 				} catch(IOException exc) {
 					Bukkit.getLogger().warning("Failed to unload (" + getClass().getSimpleName() + ") " + name);

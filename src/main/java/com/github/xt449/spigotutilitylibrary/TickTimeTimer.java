@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * @author xt449
- *
+ * <p>
  * Calculates TPS from the length of time between ticks
  */
 public abstract class TickTimeTimer {

@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * @author xt449
- *
+ * <p>
  * Calculates TPS from the number of ticks between seconds
  */
 public abstract class TickDeltaTimer {

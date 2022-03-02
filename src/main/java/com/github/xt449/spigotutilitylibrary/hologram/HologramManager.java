@@ -29,7 +29,7 @@ import java.util.List;
  */
 public abstract class HologramManager {
 
-	private static List<Hologram> holograms = new ArrayList<>();
+	private static final List<Hologram> holograms = new ArrayList<>();
 	private static boolean initialized = false;
 
 	public static void initialize(Plugin plugin) {

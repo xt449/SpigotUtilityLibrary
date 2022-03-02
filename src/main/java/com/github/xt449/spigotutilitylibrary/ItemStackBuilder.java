@@ -30,9 +30,8 @@ import java.util.List;
 
 /**
  * @author xt449
- *
+ * <p>
  * Allows for single line ItemStack construction and initialization
- *
  * @deprecated Work in progress
  */
 @Deprecated

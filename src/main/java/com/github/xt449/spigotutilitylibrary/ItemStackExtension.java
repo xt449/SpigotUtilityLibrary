@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * @author xt449
- *
+ * <p>
  * Allows for single line ItemStack construction and initialization
  */
 public class ItemStackExtension extends ItemStack {

@@ -47,7 +47,7 @@ public class InventoryInterfaceListener implements Listener {
 
 //			if(clickedInventory != null) {
 //				if(holder.getInventory() == clickedInventory) {
-					((InventoryInterfaceHolder) holder).inventoryInterface.onClick(event);
+			((InventoryInterfaceHolder) holder).inventoryInterface.onClick(event);
 //				} else {
 //					((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
 //				}
@@ -62,7 +62,7 @@ public class InventoryInterfaceListener implements Listener {
 //			final Inventory clickedInventory = event.getInventory();
 
 //			if(holder.getInventory() == clickedInventory) {
-				((InventoryInterfaceHolder) holder).inventoryInterface.onDrag(event);
+			((InventoryInterfaceHolder) holder).inventoryInterface.onDrag(event);
 //			} else {
 //				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
 //			}
@@ -92,7 +92,7 @@ public class InventoryInterfaceListener implements Listener {
 //			final Inventory clickedInventory = event.getInventory();
 
 //			if(holder.getInventory() == clickedInventory) {
-				((InventoryInterfaceHolder) holder).inventoryInterface.onOpen(event);
+			((InventoryInterfaceHolder) holder).inventoryInterface.onOpen(event);
 //			} else {
 //				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
 //			}
@@ -106,7 +106,7 @@ public class InventoryInterfaceListener implements Listener {
 //			final Inventory clickedInventory = event.getInventory();
 
 //			if(holder.getInventory() == clickedInventory) {
-				((InventoryInterfaceHolder) holder).inventoryInterface.onClose(event);
+			((InventoryInterfaceHolder) holder).inventoryInterface.onClose(event);
 //			} else {
 //				((InventoryInterfaceHolder) holder).inventoryInterface.onEventInOtherInventory(clickedInventory, event);
 //			}
